@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.clinic.provider.mapper.TitalDictMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.TitalDict">
+        <id column="id" property="id" />
+        <result column="tital_code" property="titalCode" />
+        <result column="tital_name" property="titalName" />
+        <result column="tag_code" property="tagCode" />
+        <result column="time" property="time" />
+        <result column="tag_name" property="tagName"/>
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, tital_code, tital_name, tag_code, time,tag_name
+    </sql>
+
+    <select id="getTitalDict" resultType="com.clinic.provider.domain.entity.TitalDict">
+        select t.<include refid="Base_Column_List"></include>
+        from
+        tital_dict t
+        where 1=1
+        <if test="tagList != null and tagList !=''">
+            and t.tag_code in
+            <foreach item="item" collection="tagList" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+
+    </select>
+
+</mapper>
