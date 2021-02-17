@@ -37,6 +37,18 @@ public class TagDict implements Serializable {
      */
     private Integer tagType;
 
+    /**
+     * 医院代码
+     */
+    private String hospCode;
+
+    public String getHospCode() {
+        return hospCode;
+    }
+
+    public void setHospCode(String hospCode) {
+        this.hospCode = hospCode;
+    }
 
     public Integer getId() {
         return id;
@@ -77,6 +89,7 @@ public class TagDict implements Serializable {
         ", tagCode=" + tagCode +
         ", tagName=" + tagName +
         ", tagType=" + tagType +
+                ", hospCode=" + hospCode +
         "}";
     }
 }

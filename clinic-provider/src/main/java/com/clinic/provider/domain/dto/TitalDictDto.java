@@ -44,6 +44,11 @@ public class TitalDictDto {
      */
     private String tagName;
 
+    /**
+     * 医院代码
+     */
+    private String hospCode;
+
 
 
 }

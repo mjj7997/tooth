@@ -10,11 +10,12 @@
         <result column="tag_code" property="tagCode" />
         <result column="time" property="time" />
         <result column="tag_name" property="tagName"/>
+        <result column="hosp_code" property="hospCode"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, tital_code, tital_name, tag_code, time,tag_name
+        id, tital_code, tital_name, tag_code, time,tag_name,hosp_code
     </sql>
 
     <select id="getTitalDict" resultType="com.clinic.provider.domain.entity.TitalDict">

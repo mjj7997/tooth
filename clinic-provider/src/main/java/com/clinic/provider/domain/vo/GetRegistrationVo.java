@@ -152,5 +152,20 @@ public class GetRegistrationVo implements Serializable {
      */
     private String registrationDoctor;
 
+    /**
+     * 医院代码
+     */
+    private String hospCode;
+
+    /**
+     * 实际就诊医生code
+     */
+    private String registrationDoctorCode;
+
+    /**
+     * 就诊医生代码
+     */
+    private String clinicDoctorCode;
+
 
 }

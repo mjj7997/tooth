@@ -3,6 +3,7 @@ package com.clinic.provider.mapper;
 import com.clinic.provider.domain.entity.RegistrationMaster;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.clinic.provider.domain.vo.GetRegistrationVo;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,13 @@ import java.util.Map;
  */
 public interface RegistrationMasterMapper extends BaseMapper<RegistrationMaster> {
 
-    List<GetRegistrationVo> getRegistrationMaster();
+    List<GetRegistrationVo> getRegistrationMaster(@Param("hospCode") String hospCode);
+
+    List<GetRegistrationVo> getRegistrationById(@Param("hospCode") String hospCode,@Param("patientId")String patientId,
+                                                @Param("visitId")String visitId);
+
+    Integer updateRegistrationStatus(@Param("hospCode") String hospCode,@Param("patientId")String patientId,
+                                                     @Param("visitId")String visitId,@Param("visitId")Integer clinicState);
+
 
 }

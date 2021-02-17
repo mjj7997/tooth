@@ -125,6 +125,32 @@ public class PatientMaster implements Serializable {
      */
     private String lastDate;
 
+    /**
+     * 医院代码
+     */
+    private String hospCode;
+
+    /**
+     * 就诊医生代码
+     */
+    private String clinicDoctorCode;
+
+    public String getClinicDoctorCode() {
+        return clinicDoctorCode;
+    }
+
+    public void setClinicDoctorCode(String clinicDoctorCode) {
+        this.clinicDoctorCode = clinicDoctorCode;
+    }
+
+    public String getHospCode() {
+        return hospCode;
+    }
+
+    public void setHospCode(String hospCode) {
+        this.hospCode = hospCode;
+    }
+
     public String getLastDate() {
         return lastDate;
     }
@@ -317,6 +343,8 @@ public class PatientMaster implements Serializable {
         ", addrDetailed=" + addrDetailed +
                 ", vipCode=" + vipCode +
                 ", lastDate=" + lastDate +
+                ", hospCode=" + hospCode +
+                ", clinicDoctorCode=" + clinicDoctorCode +
         "}";
     }
 }

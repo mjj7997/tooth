@@ -16,8 +16,13 @@ public class GetPantientDto {
     private String input;
 
     /**
-     *
+     * 获取病人状态
      */
     private Integer selectStatus;
+
+    /**
+     * 医院代码
+     */
+    private String hospCode;
 
 }

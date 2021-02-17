@@ -75,6 +75,32 @@ public class RegistrationMaster implements Serializable {
      */
     private String registrationDoctor;
 
+    /**
+     * 医院代码
+     */
+    private String hospCode;
+
+    /**
+     * 实际就诊医生code
+     */
+    private String registrationDoctorCode;
+
+    public String getRegistrationDoctorCode() {
+        return registrationDoctorCode;
+    }
+
+    public void setRegistrationDoctorCode(String registrationDoctorCode) {
+        this.registrationDoctorCode = registrationDoctorCode;
+    }
+
+    public String getHospCode() {
+        return hospCode;
+    }
+
+    public void setHospCode(String hospCode) {
+        this.hospCode = hospCode;
+    }
+
     public String getRegistrationDoctor() {
         return registrationDoctor;
     }
@@ -177,6 +203,8 @@ public class RegistrationMaster implements Serializable {
         ", operationDate=" + operationDate +
         ", clinicTag=" + clinicTag +
                 ", registrationDoctor=" + registrationDoctor +
+                ", hospCode=" + hospCode +
+                ", registrationDoctorCode=" + registrationDoctorCode +
         "}";
     }
 }

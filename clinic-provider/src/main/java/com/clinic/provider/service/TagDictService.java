@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.clinic.provider.domain.dto.TagListDto;
 import com.clinic.provider.domain.entity.TagDict;
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * <p>
@@ -15,7 +16,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface TagDictService extends IService<TagDict> {
 
-    JSONObject getPatientTag();
+    JSONObject getPatientTag(String hospCode);
 
     JSONObject getRegistrationTag(TagListDto tagListDto);
 

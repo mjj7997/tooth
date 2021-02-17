@@ -2,6 +2,7 @@ package com.clinic.provider.service.impl;
 
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.clinic.common.utils.RenderResultUtil;
 import com.clinic.provider.domain.dto.TagListDto;
 import com.clinic.provider.domain.entity.TagDict;
@@ -34,9 +35,13 @@ public class TagDictServiceImpl extends ServiceImpl<TagDictMapper, TagDict> impl
 
 
     @Override
-    public JSONObject getPatientTag() {
+    public JSONObject getPatientTag(String hospCode) {
         QueryWrapper<TagDict> queryWrapper = new QueryWrapper<>();
+        if (StringUtils.isEmpty(hospCode)){
+            return RenderResultUtil.renderError("hospCode缺失");
+        }
         queryWrapper.eq("tag_type",1);
+        queryWrapper.eq("hosp_code",hospCode);
         List<TagDict> tagDicts = tagDictMapper.selectList(queryWrapper);
         return RenderResultUtil.success("查询成功",tagDicts);
     }

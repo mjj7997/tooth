@@ -25,11 +25,13 @@
         <result column="addr_detailed" property="addrDetailed" />
         <result column="vip_code" property="vipCode"/>
         <result column="last_date" property="lastDate"/>
+        <result column="hosp_code" property="hospCode"/>
+        <result column="clinic_doctor_code" property="clinicDoctorCode"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, patient_id, name, sex, age, birth, phone, area_code, tel, clinic_type, clinic_doctor, clinic_date, clinic_tag_id, remark, identity, addr_province, addr_city, addr_county, addr_detailed,vip_code,last_date
+        id, patient_id, name, sex, age, birth, phone, area_code, tel, clinic_type, clinic_doctor, clinic_date, clinic_tag_id, remark, identity, addr_province, addr_city, addr_county, addr_detailed,vip_code,last_date,hosp_code,clinic_doctor_code
     </sql>
 
     <select id="getPatientMasterByDto" resultType="com.clinic.provider.domain.entity.PatientMaster">
@@ -42,6 +44,7 @@
         <if test="vipCode != null and vipCode !=''">
             and vip_code = 1
         </if>
+        and hosp_code = #{hospCode}
         <if test="lastDate != null and lastDate !=''">
             order by last_date
         </if>

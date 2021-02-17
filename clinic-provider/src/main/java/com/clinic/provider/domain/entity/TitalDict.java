@@ -47,6 +47,19 @@ public class TitalDict implements Serializable {
      */
     private String tagName;
 
+    /**
+     * 医院代码
+     */
+    private String hospCode;
+
+    public String getHospCode() {
+        return hospCode;
+    }
+
+    public void setHospCode(String hospCode) {
+        this.hospCode = hospCode;
+    }
+
     public String getTagName() {
         return tagName;
     }
@@ -104,6 +117,7 @@ public class TitalDict implements Serializable {
         ", tagCode=" + tagCode +
         ", time=" + time +
                 ", tagName=" + tagName +
+                ", hospCode=" + hospCode +
         "}";
     }
 }

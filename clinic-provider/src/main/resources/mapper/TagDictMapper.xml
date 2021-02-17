@@ -8,11 +8,12 @@
         <result column="tag_code" property="tagCode" />
         <result column="tag_name" property="tagName" />
         <result column="tag_type" property="tagType" />
+        <result column="hosp_code" property="hospCode"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, tag_code, tag_name, tag_type
+        id, tag_code, tag_name, tag_type,hosp_code
     </sql>
 
 </mapper>

@@ -3,6 +3,7 @@ package com.clinic.provider.service.impl;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.clinic.common.utils.NumberUtil;
 import com.clinic.common.utils.RenderResultUtil;
 import com.clinic.provider.domain.dto.GetPantientDto;
@@ -72,7 +73,9 @@ public class PatientMasterServiceImpl extends ServiceImpl<PatientMasterMapper, P
 
     @Override
     public JSONObject savePatientMaster(PatientMasterDto patientMasterDto) {
+        //保存子类标签
         List<TagDict> tagDictList = patientMasterDto.getTagDictList();
+        //人员列表
         PatientMaster master = patientMasterDto.getPatientMaster();
         PatientMaster patientMaster = new PatientMaster();
         BeanUtils.copyProperties(master,patientMaster);
@@ -81,9 +84,12 @@ public class PatientMasterServiceImpl extends ServiceImpl<PatientMasterMapper, P
         patientMaster.setLastDate(LocalDate.now().toString());
         String phone = master.getPhone();
         String name = master.getName();
+        String hospCode = master.getHospCode();
         QueryWrapper<PatientMaster> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("phone",phone);
         queryWrapper.eq("name",name);
+        queryWrapper.eq("hosp_code",hospCode);
+        //查看病人是否已经建档
         List<PatientMaster> patientMasters = patientMasterMapper.selectList(queryWrapper);
         if (!CollectionUtils.isEmpty(patientMasters)){
             return RenderResultUtil.renderError("该患者已建档");
@@ -102,9 +108,16 @@ public class PatientMasterServiceImpl extends ServiceImpl<PatientMasterMapper, P
 
     @Override
     public JSONObject getPatientMasterByDto(GetPantientDto getPantientDto) {
+        //输入内容
         String input = getPantientDto.getInput();
+        //医院代码
+        String hospCode = getPantientDto.getHospCode();
+        if (StringUtils.isEmpty(hospCode)){
+            return RenderResultUtil.renderError("医院代码缺失");
+        }
         Map<String,Object> map = new HashMap<>();
         map.put("input",input);
+        map.put("hospCode",hospCode);
         Integer selectStatus = getPantientDto.getSelectStatus();
         if (selectStatus==LAST_DATE){
             map.put("lastDate",1);
