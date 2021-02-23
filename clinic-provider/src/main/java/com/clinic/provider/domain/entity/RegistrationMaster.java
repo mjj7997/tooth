@@ -66,7 +66,7 @@ public class RegistrationMaster implements Serializable {
     private String operationDate;
 
     /**
-     * 就诊日期
+     * 挂号标签
      */
     private String clinicTag;
 

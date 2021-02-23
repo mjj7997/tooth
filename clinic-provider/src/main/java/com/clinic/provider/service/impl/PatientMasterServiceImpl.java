@@ -80,6 +80,7 @@ public class PatientMasterServiceImpl extends ServiceImpl<PatientMasterMapper, P
         PatientMaster patientMaster = new PatientMaster();
         BeanUtils.copyProperties(master,patientMaster);
         String tags = JSON.toJSONString(tagDictList);
+        Integer id = patientMaster.getId();
         patientMaster.setClinicTagId(tags);
         patientMaster.setLastDate(LocalDate.now().toString());
         String phone = master.getPhone();

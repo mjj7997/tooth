@@ -28,6 +28,11 @@ public class GetRegistrationVo implements Serializable {
     private String patientId;
 
     /**
+     * 就诊次数
+     */
+    private Integer visitId;
+
+    /**
      * 患者姓名
      */
     private String name;

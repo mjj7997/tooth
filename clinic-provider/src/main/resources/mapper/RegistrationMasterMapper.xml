@@ -62,9 +62,9 @@
     <update id="updateRegistrationStatus">
         update registration_master t set t.clinic_state = #{clinicState}
         where 1=1
-        and hosp_code = #{hospCode}
-        and patient_id = #{patientId}
-        and visit_id = #{visitId}
+        and t.hosp_code = #{hospCode}
+        and t.patient_id = #{patientId}
+        and t.visit_id = #{visitId}
 
     </update>
 

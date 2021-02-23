@@ -50,4 +50,8 @@ swagger2:
 #  configuration:
 #    map-underscore-to-camel-case: true
 
+#自定义配置内容
+real:
+  path: D:/fils/
+
 

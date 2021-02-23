@@ -137,7 +137,7 @@ public class RegistrationMasterServiceImpl extends ServiceImpl<RegistrationMaste
         String patientId = getRegistrationByIdDto.getPatientId();
         String visitId = getRegistrationByIdDto.getVisitId();
         List<GetRegistrationVo> list = registrationMasterMapper.getRegistrationById(hospCode, patientId, visitId);
-        return RenderResultUtil.success("查询成功",list);
+        return RenderResultUtil.success("查询成功",list.get(0));
     }
 
     @Override

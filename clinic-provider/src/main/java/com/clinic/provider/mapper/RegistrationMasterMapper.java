@@ -24,7 +24,7 @@ public interface RegistrationMasterMapper extends BaseMapper<RegistrationMaster>
                                                 @Param("visitId")String visitId);
 
     Integer updateRegistrationStatus(@Param("hospCode") String hospCode,@Param("patientId")String patientId,
-                                                     @Param("visitId")String visitId,@Param("visitId")Integer clinicState);
+                                                     @Param("visitId")String visitId,@Param("clinicState")Integer clinicState);
 
 
 }
