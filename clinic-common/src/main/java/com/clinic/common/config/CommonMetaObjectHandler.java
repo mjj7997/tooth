@@ -19,7 +19,7 @@ public class CommonMetaObjectHandler implements MetaObjectHandler {
     @Override
     public void insertFill(MetaObject metaObject) {
         log.info("插入时自动填充");
-          setFieldValByName("createTime", LocalDateTime.now(),metaObject);
+//          setFieldValByName("createTime", LocalDateTime.now(),metaObject);
     }
 
     @Override

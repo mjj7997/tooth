@@ -23,11 +23,13 @@
         <result column="diagnose" property="diagnose" />
         <result column="treatment" property="treatment" />
         <result column="doctor_advice" property="doctorAdvice" />
+        <result column="tooth_location" property="toothLocation"/>
+        <result column="treat_plan" property="treatPlan"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, sex, age, patient_id, visit_id, clinic_type, registration_doctor, registration_doctor_code, assistant, registration_date, symptom, history_of_present_illness, previous_history, inspection_report, ray_examination, diagnose, treatment, doctor_advice
+        id, name, sex, age, patient_id, visit_id, clinic_type, registration_doctor, registration_doctor_code, assistant, registration_date, symptom, history_of_present_illness, previous_history, inspection_report, ray_examination, diagnose, treatment, doctor_advice,tooth_location,treat_plan
     </sql>
 
 </mapper>

@@ -60,7 +60,9 @@ public class StaffDictServiceImpl extends ServiceImpl<StaffDictMapper, StaffDict
                 String md5Str = MD5Utils.getMD5Str(password);
                 staffDict.setPassword(md5Str);
                 staffDictMapper.insert(staffDict);
-                }
+                Integer id = staffDict.getId();
+                log.info("猜猜我是谁"+id.toString());
+            }
             return RenderResultUtil.renderSuccess("插入成功");
         } catch (Exception e) {
             e.printStackTrace();
@@ -100,6 +102,9 @@ public class StaffDictServiceImpl extends ServiceImpl<StaffDictMapper, StaffDict
             }
             for (StaffDict staffDict:staffDictList) {
                 Integer id = staffDict.getId();
+                String password = staffDict.getPassword();
+                String md5Str = MD5Utils.getMD5Str(password);
+                staffDict.setPassword(md5Str);
                 QueryWrapper<StaffDict> wrapper = new QueryWrapper<>();
                 wrapper.eq("id",id);
                 staffDictMapper.update(staffDict,wrapper);

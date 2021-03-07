@@ -3,6 +3,7 @@ package com.clinic.provider.service.impl;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.clinic.common.utils.RenderResultUtil;
+import com.clinic.provider.api.CommonResult;
 import com.clinic.provider.domain.dto.CaseHistoryDto;
 import com.clinic.provider.domain.dto.GetCaseHistoryDto;
 import com.clinic.provider.domain.entity.CaseHistory;
@@ -63,12 +64,32 @@ public class CaseHistoryServiceImpl extends ServiceImpl<CaseHistoryMapper, CaseH
         String visitId = caseHistoryDto.getVisitId();
         String hospCode = caseHistoryDto.getHospCode();
         QueryWrapper<CaseHistory> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("patient_id",patientId).eq("visit_id",visitId).eq("hospCode",hospCode);
+        queryWrapper.eq("patient_id",patientId).eq("visit_id",visitId).eq("hosp_code",hospCode);
         List<CaseHistory> caseHistories = caseHistoryMapper.selectList(queryWrapper);
         if (CollectionUtils.isEmpty(caseHistories)){
-            return RenderResultUtil.renderError("查询结果为空");
+            CaseHistory caseHistory = new CaseHistory();
+            JSONObject jsonObject = RenderResultUtil.error("查询结果为空", caseHistory);
+            return jsonObject;
         }else {
             return RenderResultUtil.success("查询成功",caseHistories.get(0));
         }
+    }
+
+    @Override
+    public CommonResult<CaseHistory> getCaseHistoryById1(GetCaseHistoryDto caseHistoryDto) {
+        String patientId = caseHistoryDto.getPatientId();
+        String visitId = caseHistoryDto.getVisitId();
+        String hospCode = caseHistoryDto.getHospCode();
+        QueryWrapper<CaseHistory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("patient_id",patientId).eq("visit_id",visitId).eq("hosp_code",hospCode);
+        List<CaseHistory> caseHistories = caseHistoryMapper.selectList(queryWrapper);
+        if (CollectionUtils.isEmpty(caseHistories)){
+            CaseHistory caseHistory = new CaseHistory();
+            CommonResult<CaseHistory> success = CommonResult.success(caseHistory);
+            return success;
+        }else {
+            return CommonResult.success(caseHistories.get(0));
+        }
+
     }
 }

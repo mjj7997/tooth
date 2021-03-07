@@ -54,4 +54,12 @@ swagger2:
 real:
   path: D:/fils/
 
+#oss相关服务
+oss:
+  endPoint: oss-cn-beijing.aliyuncs.com
+  url: https://oos-all.oss-cn-shenzhen.aliyuncs.com/
+  accessKeyId: LTAI4G43jq952avhHk4b5hxj
+  accessKeySecret: WVj8F1YfIrDAR8Zr7VExyaxzOVSSxu
+  bucketName: mjjoss
+
 

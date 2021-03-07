@@ -1,5 +1,8 @@
 package com.clinic.provider.domain.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
 
 /**
@@ -17,6 +20,7 @@ public class CaseHistory implements Serializable {
     /**
      * 主键id
      */
+    @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
 
     /**
@@ -113,6 +117,32 @@ public class CaseHistory implements Serializable {
      * 医院code
      */
     private String hospCode;
+
+    /**
+     * 牙位信息
+     */
+    private String toothLocation;
+
+    /**
+     * 治疗计划
+     */
+    private String treatPlan;
+
+    public String getTreatPlan() {
+        return treatPlan;
+    }
+
+    public void setTreatPlan(String treatPlan) {
+        this.treatPlan = treatPlan;
+    }
+
+    public String getToothLocation() {
+        return toothLocation;
+    }
+
+    public void setToothLocation(String toothLocation) {
+        this.toothLocation = toothLocation;
+    }
 
     public String getHospCode() {
         return hospCode;
@@ -297,6 +327,8 @@ public class CaseHistory implements Serializable {
         ", treatment=" + treatment +
         ", doctorAdvice=" + doctorAdvice +
                 ", hospCode=" + hospCode +
+                ", toothLocation=" + toothLocation +
+                ", treatPlan=" + treatPlan +
         "}";
     }
 }

@@ -2,6 +2,7 @@ package com.clinic.common.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 /**
  * @parm :
@@ -35,6 +36,7 @@ public class RenderResultUtil {
         JsonResult jsonResult =new JsonResult();
         jsonResult.setSuccess(true);
         jsonResult.setStatus("200");
+        jsonResult.setMsg(msg);
         jsonResult.setResult(t);
         return toJSONObject(jsonResult);
     }
@@ -73,7 +75,7 @@ public class RenderResultUtil {
             if (result == null) {
                 return null;
             }
-            // 对象转换
+            // 对象转换  SerializerFeature.WriteNullStringAsEmpty)
             return JSON.parseObject(JSON.toJSONString(result));
         } catch (Exception e) {
             e.printStackTrace();
