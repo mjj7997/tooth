@@ -13,7 +13,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author majunjie
@@ -21,24 +21,24 @@ import java.util.Map;
  */
 @RestController
 @RequestMapping("/priceDict")
-@Api(value = "价表维护api",tags = {"价表维护api"})
+@Api(value = "价表维护api", tags = {"价表维护api"})
 public class PriceDictController {
 
     @Autowired
     private PriceDictService priceDictService;
 
     @PostMapping("getPriceDictByClassId")
-    public JSONObject getPriceDictByClassId(@RequestParam("classId")String classId,@RequestParam("input")String input,@RequestParam("hospCode")String hospCode){
-        return priceDictService.getPriceDictByClassId(classId,input,hospCode);
+    public JSONObject getPriceDictByClassId(@RequestParam("classId") String classId, @RequestParam("input") String input, @RequestParam("hospCode") String hospCode) {
+        return priceDictService.getPriceDictByClassId(classId, input, hospCode);
     }
 
     @PostMapping("saveOrUpdatePriceDict")
-    public JSONObject saveOrUpdatePriceDict(@RequestBody SavePriceDictDto savePriceDictDto){
+    public JSONObject saveOrUpdatePriceDict(@RequestBody SavePriceDictDto savePriceDictDto) {
         return priceDictService.saveOrUpdatePriceDict(savePriceDictDto);
     }
 
     @PostMapping("deletePriceDictById")
-    public JSONObject deletePriceDictById(@RequestParam("id") String id){
+    public JSONObject deletePriceDictById(@RequestParam("id") String id) {
         return priceDictService.deletePriceDictById(id);
     }
 

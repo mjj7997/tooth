@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author majunjie
@@ -41,19 +41,19 @@ public class StaffDictServiceImpl extends ServiceImpl<StaffDictMapper, StaffDict
     public JSONObject saveStaffDict(StaffDictDto staffDictDto) {
         try {
             List<StaffDict> staffDictList = staffDictDto.getStaffDictList();
-            if (CollectionUtils.isEmpty(staffDictList)){
-              return RenderResultUtil.renderSuccess("插入成功");
+            if (CollectionUtils.isEmpty(staffDictList)) {
+                return RenderResultUtil.renderSuccess("插入成功");
             }
             String hospCode = staffDictList.get(0).getHospCode();
             QueryWrapper<StaffDict> wrapper = new QueryWrapper<>();
-            wrapper.eq("hosp_code",hospCode);
+            wrapper.eq("hosp_code", hospCode);
             List<StaffDict> hospStaff = staffDictMapper.selectList(wrapper);
             List<String> collect = hospStaff.stream()
                     .map(entity -> entity.getUserId())
                     .collect(Collectors.toList());
-            for (StaffDict staffDict:staffDictList) {
+            for (StaffDict staffDict : staffDictList) {
                 String userId = staffDict.getUserId();
-                if (collect.contains(userId)){
+                if (collect.contains(userId)) {
                     return RenderResultUtil.renderError("工号重复");
                 }
                 String password = staffDict.getPassword();
@@ -61,7 +61,7 @@ public class StaffDictServiceImpl extends ServiceImpl<StaffDictMapper, StaffDict
                 staffDict.setPassword(md5Str);
                 staffDictMapper.insert(staffDict);
                 Integer id = staffDict.getId();
-                log.info("猜猜我是谁"+id.toString());
+                log.info("猜猜我是谁" + id.toString());
             }
             return RenderResultUtil.renderSuccess("插入成功");
         } catch (Exception e) {
@@ -78,17 +78,17 @@ public class StaffDictServiceImpl extends ServiceImpl<StaffDictMapper, StaffDict
         Integer status = selectStaffDto.getStatus();
 
         String input = selectStaffDto.getInput();
-        input = "%"+input + "%";
+        input = "%" + input + "%";
         List<StaffDict> staffDict = staffDictMapper.getStaffDict(status, hospCode, input);
 
-        return RenderResultUtil.success("查询成功",staffDict);
+        return RenderResultUtil.success("查询成功", staffDict);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, timeout = 36000, rollbackFor = Exception.class)
     public JSONObject delStaffDictById(Integer id) {
         QueryWrapper<StaffDict> wrapper = new QueryWrapper<>();
-        wrapper.eq("id",id);
+        wrapper.eq("id", id);
         staffDictMapper.deleteById(id);
         return RenderResultUtil.renderSuccess("删除成功");
     }
@@ -97,17 +97,17 @@ public class StaffDictServiceImpl extends ServiceImpl<StaffDictMapper, StaffDict
     public JSONObject updateStaffDictById(StaffDictDto staffDictDto) {
         try {
             List<StaffDict> staffDictList = staffDictDto.getStaffDictList();
-            if (CollectionUtils.isEmpty(staffDictList)){
+            if (CollectionUtils.isEmpty(staffDictList)) {
                 return RenderResultUtil.renderSuccess("修改成功");
             }
-            for (StaffDict staffDict:staffDictList) {
+            for (StaffDict staffDict : staffDictList) {
                 Integer id = staffDict.getId();
                 String password = staffDict.getPassword();
                 String md5Str = MD5Utils.getMD5Str(password);
                 staffDict.setPassword(md5Str);
                 QueryWrapper<StaffDict> wrapper = new QueryWrapper<>();
-                wrapper.eq("id",id);
-                staffDictMapper.update(staffDict,wrapper);
+                wrapper.eq("id", id);
+                staffDictMapper.update(staffDict, wrapper);
 
             }
             return RenderResultUtil.renderSuccess("修改成功");
@@ -122,13 +122,13 @@ public class StaffDictServiceImpl extends ServiceImpl<StaffDictMapper, StaffDict
     @Override
     public JSONObject getStaffDictByUser(String userId) {
         QueryWrapper<StaffDict> wrapper = new QueryWrapper<>();
-        wrapper.eq("user_id",userId);
+        wrapper.eq("user_id", userId);
         List<StaffDict> staffDicts = staffDictMapper.selectList(wrapper);
-        if (CollectionUtils.isEmpty(staffDicts)){
+        if (CollectionUtils.isEmpty(staffDicts)) {
             return RenderResultUtil.renderError("账户登录有误");
         }
         StaffDict staffDict = staffDicts.get(0);
-        return RenderResultUtil.success("查询成功",staffDict);
+        return RenderResultUtil.success("查询成功", staffDict);
     }
 
 

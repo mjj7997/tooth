@@ -1,19 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.ClassDictMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.ClassDict">
-        <id column="id" property="id" />
-        <result column="class_code" property="classCode" />
-        <result column="class_name" property="className" />
-        <result column="price_type" property="priceType" />
-        <result column="hosp_code" property="hospCode" />
+        <id column="id" property="id"/>
+        <result column="class_code" property="classCode"/>
+        <result column="class_name" property="className"/>
+        <result column="price_type" property="priceType"/>
+        <result column="hosp_code" property="hospCode"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
         id, class_code, class_name, price_type, hosp_code
     </sql>
-
 </mapper>

@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author majunjie
@@ -37,28 +37,27 @@ public class TagDictServiceImpl extends ServiceImpl<TagDictMapper, TagDict> impl
     @Override
     public JSONObject getPatientTag(String hospCode) {
         QueryWrapper<TagDict> queryWrapper = new QueryWrapper<>();
-        if (StringUtils.isEmpty(hospCode)){
+        if (StringUtils.isEmpty(hospCode)) {
             return RenderResultUtil.renderError("hospCode缺失");
         }
-        queryWrapper.eq("tag_type",1);
-        queryWrapper.eq("hosp_code",hospCode);
+        queryWrapper.eq("tag_type", 1);
+        queryWrapper.eq("hosp_code", hospCode);
         List<TagDict> tagDicts = tagDictMapper.selectList(queryWrapper);
-        return RenderResultUtil.success("查询成功",tagDicts);
+        return RenderResultUtil.success("查询成功", tagDicts);
     }
 
     @Override
     public JSONObject getRegistrationTag(TagListDto tagListDto) {
 
         List<Integer> tagList = tagListDto.getTagList();
-        if (tagList.size()>0){
+        if (tagList.size() > 0) {
             List<TitalDict> titalDict = titalDictMapper.getTitalDict(tagList);
-            return RenderResultUtil.success("查询成功",titalDict);
-        }else {
+            return RenderResultUtil.success("查询成功", titalDict);
+        } else {
             QueryWrapper<TitalDict> queryWrapper = new QueryWrapper<>();
             List<TitalDict> titalDict = titalDictMapper.selectList(queryWrapper);
-            return RenderResultUtil.success("查询成功",titalDict);
+            return RenderResultUtil.success("查询成功", titalDict);
         }
-
 
 
     }

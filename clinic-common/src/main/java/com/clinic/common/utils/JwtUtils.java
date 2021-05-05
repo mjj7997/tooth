@@ -54,9 +54,9 @@ public class JwtUtils {
     }
 
     /**
-     * @Author  MSFH
-     * @Date   2020-8-27 11:13:52
-     * @Return      DecodedJWT JWT信息获取
+     * @Author MSFH
+     * @Date 2020-8-27 11:13:52
+     * @Return DecodedJWT JWT信息获取
      * @Description 获取JWT的信息
      */
     public static DecodedJWT getTokenInfo(String token) {

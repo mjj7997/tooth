@@ -2,11 +2,12 @@ package com.clinic.provider.domain.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author majunjie
@@ -14,7 +15,7 @@ import java.io.Serializable;
  */
 public class TitalDict implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * id
@@ -111,13 +112,13 @@ public class TitalDict implements Serializable {
     @Override
     public String toString() {
         return "TitalDict{" +
-        "id=" + id +
-        ", titalCode=" + titalCode +
-        ", titalName=" + titalName +
-        ", tagCode=" + tagCode +
-        ", time=" + time +
+                "id=" + id +
+                ", titalCode=" + titalCode +
+                ", titalName=" + titalName +
+                ", tagCode=" + tagCode +
+                ", time=" + time +
                 ", tagName=" + tagName +
                 ", hospCode=" + hospCode +
-        "}";
+                "}";
     }
 }

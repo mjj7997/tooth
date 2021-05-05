@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author majunjie
@@ -17,7 +17,7 @@ import java.io.Serializable;
  */
 public class RegistrationMaster implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * id
@@ -192,19 +192,19 @@ public class RegistrationMaster implements Serializable {
     @Override
     public String toString() {
         return "RegistrationMaster{" +
-        "id=" + id +
-        ", patientId=" + patientId +
-        ", visitId=" + visitId +
-        ", name=" + name +
-        ", phone=" + phone +
-        ", clinicState=" + clinicState +
-        ", vipCode=" + vipCode +
-        ", clinicDate=" + registrationDate +
-        ", operationDate=" + operationDate +
-        ", clinicTag=" + clinicTag +
+                "id=" + id +
+                ", patientId=" + patientId +
+                ", visitId=" + visitId +
+                ", name=" + name +
+                ", phone=" + phone +
+                ", clinicState=" + clinicState +
+                ", vipCode=" + vipCode +
+                ", clinicDate=" + registrationDate +
+                ", operationDate=" + operationDate +
+                ", clinicTag=" + clinicTag +
                 ", registrationDoctor=" + registrationDoctor +
                 ", hospCode=" + hospCode +
                 ", registrationDoctorCode=" + registrationDoctorCode +
-        "}";
+                "}";
     }
 }

@@ -1,26 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.PayDemandNoteMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.PayDemandNote">
-        <id column="id" property="id" />
-        <result column="patient_id" property="patientId" />
-        <result column="visit_id" property="visitId" />
-        <result column="name" property="name" />
-        <result column="sex" property="sex" />
-        <result column="doctor_code" property="doctorCode" />
-        <result column="doctor_name" property="doctorName" />
-        <result column="assistant_code" property="assistantCode" />
-        <result column="assistant_name" property="assistantName" />
-        <result column="pay_note_date" property="payNoteDate" />
-        <result column="remark" property="remark" />
-        <result column="hosp_code" property="hospCode" />
+        <id column="id" property="id"/>
+        <result column="patient_id" property="patientId"/>
+        <result column="visit_id" property="visitId"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="doctor_code" property="doctorCode"/>
+        <result column="doctor_name" property="doctorName"/>
+        <result column="assistant_code" property="assistantCode"/>
+        <result column="assistant_name" property="assistantName"/>
+        <result column="pay_note_date" property="payNoteDate"/>
+        <result column="remark" property="remark"/>
+        <result column="hosp_code" property="hospCode"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, patient_id, visit_id, name, sex, doctor_code, doctor_name, assistant_code, assistant_name, pay_note_date, remark, hosp_code
+        id, patient_id, visit_id, name, sex, doctor_code, doctor_name, assistant_code, assistant_name, pay_note_date,
+        remark, hosp_code
     </sql>
-
 </mapper>

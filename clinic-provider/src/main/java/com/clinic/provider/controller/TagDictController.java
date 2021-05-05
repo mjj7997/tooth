@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author majunjie
@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/tagDict")
-@Api(value = "标签api",tags = {"标签api"})
+@Api(value = "标签api", tags = {"标签api"})
 public class TagDictController {
 
     @Autowired
@@ -27,14 +27,14 @@ public class TagDictController {
 
 
     @PostMapping("getPatientTag")
-    @ApiOperation(value = "getPatientTag",httpMethod = "POST")
-    public JSONObject getPatientTag(@RequestParam("hospCode") String hospCode){
+    @ApiOperation(value = "getPatientTag", httpMethod = "POST")
+    public JSONObject getPatientTag(@RequestParam("hospCode") String hospCode) {
         return tagDictService.getPatientTag(hospCode);
     }
 
     @PostMapping("getRegistrationTag")
-    @ApiOperation(value = "getRegistrationTag",httpMethod = "POST")
-    public JSONObject getRegistrationTag(@RequestBody TagListDto tagListDto){
+    @ApiOperation(value = "getRegistrationTag", httpMethod = "POST")
+    public JSONObject getRegistrationTag(@RequestBody TagListDto tagListDto) {
         return tagDictService.getRegistrationTag(tagListDto);
     }
 

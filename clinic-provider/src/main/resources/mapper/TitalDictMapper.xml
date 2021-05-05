@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.TitalDictMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.TitalDict">
-        <id column="id" property="id" />
-        <result column="tital_code" property="titalCode" />
-        <result column="tital_name" property="titalName" />
-        <result column="tag_code" property="tagCode" />
-        <result column="time" property="time" />
+        <id column="id" property="id"/>
+        <result column="tital_code" property="titalCode"/>
+        <result column="tital_name" property="titalName"/>
+        <result column="tag_code" property="tagCode"/>
+        <result column="time" property="time"/>
         <result column="tag_name" property="tagName"/>
         <result column="hosp_code" property="hospCode"/>
     </resultMap>
@@ -19,7 +18,9 @@
     </sql>
 
     <select id="getTitalDict" resultType="com.clinic.provider.domain.entity.TitalDict">
-        select t.<include refid="Base_Column_List"></include>
+        select t.
+        <include refid="Base_Column_List">
+        </include>
         from
         tital_dict t
         where 1=1
@@ -29,7 +30,5 @@
                 #{item}
             </foreach>
         </if>
-
     </select>
-
 </mapper>

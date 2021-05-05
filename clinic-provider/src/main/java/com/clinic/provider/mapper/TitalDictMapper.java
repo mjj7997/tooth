@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author majunjie
@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface TitalDictMapper extends BaseMapper<TitalDict> {
 
-    List<TitalDict> getTitalDict(@Param("tagList")List<Integer> tagList);
+    List<TitalDict> getTitalDict(@Param("tagList") List<Integer> tagList);
 
 
 }

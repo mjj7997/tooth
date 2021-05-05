@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author majunjie
@@ -15,7 +15,7 @@ import java.io.Serializable;
  */
 public class CaseHistory implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 主键id
@@ -307,28 +307,28 @@ public class CaseHistory implements Serializable {
     @Override
     public String toString() {
         return "CaseHistory{" +
-        "id=" + id +
-        ", name=" + name +
-        ", sex=" + sex +
-        ", age=" + age +
-        ", patientId=" + patientId +
-        ", visitId=" + visitId +
-        ", clinicType=" + clinicType +
-        ", registrationDoctor=" + registrationDoctor +
-        ", registrationDoctorCode=" + registrationDoctorCode +
-        ", assistant=" + assistant +
-        ", registrationDate=" + registrationDate +
-        ", symptom=" + symptom +
-        ", historyOfPresentIllness=" + historyOfPresentIllness +
-        ", previousHistory=" + previousHistory +
-        ", inspectionReport=" + inspectionReport +
-        ", rayExamination=" + rayExamination +
-        ", diagnose=" + diagnose +
-        ", treatment=" + treatment +
-        ", doctorAdvice=" + doctorAdvice +
+                "id=" + id +
+                ", name=" + name +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", patientId=" + patientId +
+                ", visitId=" + visitId +
+                ", clinicType=" + clinicType +
+                ", registrationDoctor=" + registrationDoctor +
+                ", registrationDoctorCode=" + registrationDoctorCode +
+                ", assistant=" + assistant +
+                ", registrationDate=" + registrationDate +
+                ", symptom=" + symptom +
+                ", historyOfPresentIllness=" + historyOfPresentIllness +
+                ", previousHistory=" + previousHistory +
+                ", inspectionReport=" + inspectionReport +
+                ", rayExamination=" + rayExamination +
+                ", diagnose=" + diagnose +
+                ", treatment=" + treatment +
+                ", doctorAdvice=" + doctorAdvice +
                 ", hospCode=" + hospCode +
                 ", toothLocation=" + toothLocation +
                 ", treatPlan=" + treatPlan +
-        "}";
+                "}";
     }
 }

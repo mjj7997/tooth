@@ -27,7 +27,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author majunjie
@@ -56,19 +56,19 @@ public class PatientMasterServiceImpl extends ServiceImpl<PatientMasterMapper, P
         int dayOfMonth = localDate.getDayOfMonth();
         String s = NumberUtil.geFourNumber(2, dayOfMonth);
         QueryWrapper<PatientMaster> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("clinic_date",localDate);
+        queryWrapper.eq("clinic_date", localDate);
         List<PatientMaster> patientMasters = patientMasterMapper.selectList(queryWrapper);
         int max = 0;
-        if (CollectionUtils.isEmpty(patientMasters)){
+        if (CollectionUtils.isEmpty(patientMasters)) {
             max = 1;
-        }else {
+        } else {
             max = patientMasters.size() + 1;
         }
         String end = NumberUtil.geFourNumber(3, max);
 
-        String result = y+m+s+end;
+        String result = y + m + s + end;
         log.info(result);
-        return RenderResultUtil.success("查询成功",result);
+        return RenderResultUtil.success("查询成功", result);
     }
 
     @Override
@@ -78,7 +78,7 @@ public class PatientMasterServiceImpl extends ServiceImpl<PatientMasterMapper, P
         //人员列表
         PatientMaster master = patientMasterDto.getPatientMaster();
         PatientMaster patientMaster = new PatientMaster();
-        BeanUtils.copyProperties(master,patientMaster);
+        BeanUtils.copyProperties(master, patientMaster);
         String tags = JSON.toJSONString(tagDictList);
         Integer id = patientMaster.getId();
         patientMaster.setClinicTagId(tags);
@@ -87,17 +87,17 @@ public class PatientMasterServiceImpl extends ServiceImpl<PatientMasterMapper, P
         String name = master.getName();
         String hospCode = master.getHospCode();
         QueryWrapper<PatientMaster> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("phone",phone);
-        queryWrapper.eq("name",name);
-        queryWrapper.eq("hosp_code",hospCode);
+        queryWrapper.eq("phone", phone);
+        queryWrapper.eq("name", name);
+        queryWrapper.eq("hosp_code", hospCode);
         //查看病人是否已经建档
         List<PatientMaster> patientMasters = patientMasterMapper.selectList(queryWrapper);
-        if (!CollectionUtils.isEmpty(patientMasters)){
+        if (!CollectionUtils.isEmpty(patientMasters)) {
             return RenderResultUtil.renderError("该患者已建档");
         }
         try {
             patientMasterMapper.insert(patientMaster);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
@@ -113,21 +113,21 @@ public class PatientMasterServiceImpl extends ServiceImpl<PatientMasterMapper, P
         String input = getPantientDto.getInput();
         //医院代码
         String hospCode = getPantientDto.getHospCode();
-        if (StringUtils.isEmpty(hospCode)){
+        if (StringUtils.isEmpty(hospCode)) {
             return RenderResultUtil.renderError("医院代码缺失");
         }
-        Map<String,Object> map = new HashMap<>();
-        map.put("input",input);
-        map.put("hospCode",hospCode);
+        Map<String, Object> map = new HashMap<>();
+        map.put("input", input);
+        map.put("hospCode", hospCode);
         Integer selectStatus = getPantientDto.getSelectStatus();
-        if (selectStatus==LAST_DATE){
-            map.put("lastDate",1);
-        }else if (selectStatus==CLINIC_DATE){
-            map.put("clinicDate",2);
-        }else if (selectStatus==VIP_CODE){
-            map.put("vipCode",3);
+        if (selectStatus == LAST_DATE) {
+            map.put("lastDate", 1);
+        } else if (selectStatus == CLINIC_DATE) {
+            map.put("clinicDate", 2);
+        } else if (selectStatus == VIP_CODE) {
+            map.put("vipCode", 3);
         }
         List<PatientMaster> patientMasterByDto = patientMasterMapper.getPatientMasterByDto(map);
-        return RenderResultUtil.success("查询成功",patientMasterByDto);
+        return RenderResultUtil.success("查询成功", patientMasterByDto);
     }
 }

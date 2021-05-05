@@ -21,18 +21,19 @@ public class SwaggerConfig {
 
     @Value("${swagger2.enable}")
     private boolean swagger2Enable;
+
     /**
      * 通过 createRestApi函数来构建一个DocketBean
-     * */
-    public Docket createRestApi(){
+     */
+    public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-        //是否启用swagger2
-        .enable(swagger2Enable)
+                //是否启用swagger2
+                .enable(swagger2Enable)
                 .apiInfo(apiInfo())
                 .select()
-        //控制暴露出去的路径下的实例
-        // 如果某个接口不想暴露,可以使用以下注解
-        //@ApiIgnore 该接口就不会暴露在 swagger2 的页面下
+                //控制暴露出去的路径下的实例
+                // 如果某个接口不想暴露,可以使用以下注解
+                //@ApiIgnore 该接口就不会暴露在 swagger2 的页面下
                 .apis(RequestHandlerSelectors.basePackage("com.clinic.provider"))
                 .paths(PathSelectors.any())
                 .build();
@@ -41,10 +42,10 @@ public class SwaggerConfig {
     //构建 api文档的详细信息函数
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-        //页面标题
-        .title("Spring Boot Swagger2 构建RESTful API")
-        //条款地址
-        .termsOfServiceUrl("http://localhost:8080/")
+                //页面标题
+                .title("Spring Boot Swagger2 构建RESTful API")
+                //条款地址
+                .termsOfServiceUrl("http://localhost:8080/")
                 .license("License Version 1.0")
                 .version("1.0")
                 //描述

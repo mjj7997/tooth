@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.TagDictMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.TagDict">
-        <id column="id" property="id" />
-        <result column="tag_code" property="tagCode" />
-        <result column="tag_name" property="tagName" />
-        <result column="tag_type" property="tagType" />
+        <id column="id" property="id"/>
+        <result column="tag_code" property="tagCode"/>
+        <result column="tag_name" property="tagName"/>
+        <result column="tag_type" property="tagType"/>
         <result column="hosp_code" property="hospCode"/>
     </resultMap>
 
@@ -15,5 +14,4 @@
     <sql id="Base_Column_List">
         id, tag_code, tag_name, tag_type,hosp_code
     </sql>
-
 </mapper>

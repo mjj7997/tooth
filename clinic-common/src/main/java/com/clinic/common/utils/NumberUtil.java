@@ -10,10 +10,11 @@ import java.text.NumberFormat;
 public class NumberUtil {
     /**
      * 数字前面自动补零
+     *
      * @param number 数字
      * @return
      */
-    public static String geFourNumber(int length,int number){
+    public static String geFourNumber(int length, int number) {
         NumberFormat formatter = NumberFormat.getNumberInstance();
         formatter.setMinimumIntegerDigits(length);
         formatter.setGroupingUsed(false);

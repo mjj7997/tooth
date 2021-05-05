@@ -6,6 +6,7 @@ package com.clinic.provider.template;
  * @auther :
  * @createTime :
  */
+
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.generator.AutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
@@ -17,10 +18,9 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 public class CodeGenerator2 {
 
     /**
-     *
+     * @param args
      * @Title: main
      * @Description: 生成
-     * @param args
      */
     public static void main(String[] args) {
         AutoGenerator mpg = new AutoGenerator();

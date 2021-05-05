@@ -28,7 +28,7 @@ import java.util.stream.Collectors;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author majunjie
@@ -54,7 +54,7 @@ public class ClassDictServiceImpl extends ServiceImpl<ClassDictMapper, ClassDict
     @Override
     public JSONObject getClassDict(String hospCode) {
         QueryWrapper<ClassDict> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("hosp_code",hospCode);
+        queryWrapper.eq("hosp_code", hospCode);
         List<ClassDict> classDicts = classDictMapper.selectList(queryWrapper);
         List<ClassDict> diagnosis = classDicts.stream()
                 .filter(entity -> DIAGNOSIS.equals(entity.getPriceType()))
@@ -65,21 +65,21 @@ public class ClassDictServiceImpl extends ServiceImpl<ClassDictMapper, ClassDict
         GetClassDictVo getClassDictVo = new GetClassDictVo();
         getClassDictVo.setDiagnosis(diagnosis);
         getClassDictVo.setMedicines(medicine);
-        return RenderResultUtil.success("查询成功",getClassDictVo);
+        return RenderResultUtil.success("查询成功", getClassDictVo);
     }
 
     @Override
     @Transactional(propagation = Propagation.REQUIRED, isolation = Isolation.DEFAULT, timeout = 36000, rollbackFor = Exception.class)
     public JSONObject saveOrUpdateClassDict(SaveClassDictDto saveClassDictDto) {
         ClassDict classDict = new ClassDict();
-        BeanUtils.copyProperties(saveClassDictDto,classDict);
+        BeanUtils.copyProperties(saveClassDictDto, classDict);
         Integer id = saveClassDictDto.getId();
-        if (id!=null){
-            QueryWrapper<ClassDict> queryWrapper=new QueryWrapper<>();
-            queryWrapper.eq("id",id);
-            classDictMapper.update(classDict,queryWrapper);
+        if (id != null) {
+            QueryWrapper<ClassDict> queryWrapper = new QueryWrapper<>();
+            queryWrapper.eq("id", id);
+            classDictMapper.update(classDict, queryWrapper);
             return RenderResultUtil.renderSuccess("修改成功");
-        }else {
+        } else {
             classDictMapper.insert(classDict);
             return RenderResultUtil.renderSuccess("保存成功");
         }
@@ -87,11 +87,11 @@ public class ClassDictServiceImpl extends ServiceImpl<ClassDictMapper, ClassDict
 
     @Override
     public JSONObject deleteClassDictById(Integer id) {
-        QueryWrapper<ClassDict> queryWrapper=new QueryWrapper<>();
-        queryWrapper.eq("id",id);
+        QueryWrapper<ClassDict> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("id", id);
         try {
             classDictMapper.delete(queryWrapper);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
@@ -103,7 +103,7 @@ public class ClassDictServiceImpl extends ServiceImpl<ClassDictMapper, ClassDict
     @Override
     public JSONObject getMenuList(String hospCode) {
         QueryWrapper<ClassDict> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("hosp_code",hospCode);
+        queryWrapper.eq("hosp_code", hospCode);
         List<ClassDict> classDicts = classDictMapper.selectList(queryWrapper);
         PriceListVo priceListVo = new PriceListVo();
         List<ClassDict> diagnosis = classDicts.stream()
@@ -119,15 +119,15 @@ public class ClassDictServiceImpl extends ServiceImpl<ClassDictMapper, ClassDict
         List<GetPriceListVo> priceList2 = getPriceList(medicineList, medicine);
         priceListVo.setDiagnosisVoList(priceList1);
         priceListVo.setDiagnosisVoList(priceList2);
-        return RenderResultUtil.success("查询成功",priceListVo);
+        return RenderResultUtil.success("查询成功", priceListVo);
     }
 
-    private List<GetPriceListVo> getPriceList(List<GetPriceListVo> list, List<ClassDict> classDictList){
+    private List<GetPriceListVo> getPriceList(List<GetPriceListVo> list, List<ClassDict> classDictList) {
 
-        for (ClassDict classDict:classDictList) {
-            QueryWrapper<PriceDict> queryWrapper =new QueryWrapper<>();
+        for (ClassDict classDict : classDictList) {
+            QueryWrapper<PriceDict> queryWrapper = new QueryWrapper<>();
             Integer id = classDict.getId();
-            queryWrapper.eq("class_type",id);
+            queryWrapper.eq("class_type", id);
             List<PriceDict> priceDicts = priceDictMapper.selectList(queryWrapper);
             GetPriceListVo getPriceListVo = new GetPriceListVo();
             getPriceListVo.setClassDict(classDict);

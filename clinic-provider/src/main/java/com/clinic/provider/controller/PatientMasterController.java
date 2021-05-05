@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author majunjie
@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/patientMaster")
-@Api(value = "患者主信息api",tags = {"患者主信息api"})
+@Api(value = "患者主信息api", tags = {"患者主信息api"})
 public class PatientMasterController {
 
 
@@ -34,22 +34,22 @@ public class PatientMasterController {
 
 
     @PostMapping("getpatientId")
-    @ApiOperation(value = "getpatientId",httpMethod = "POST")
-    public JSONObject getpatientId(){
+    @ApiOperation(value = "getpatientId", httpMethod = "POST")
+    public JSONObject getpatientId() {
         return patientMasterService.getpatientId();
     }
 
 
     @PostMapping("savePatientMaster")
-    @ApiOperation(value = "savePatientMaster",httpMethod = "POST")
-    public JSONObject savePatientMaster(@RequestBody PatientMasterDto patientMasterDto){
+    @ApiOperation(value = "savePatientMaster", httpMethod = "POST")
+    public JSONObject savePatientMaster(@RequestBody PatientMasterDto patientMasterDto) {
         JSONObject jsonObject = patientMasterService.savePatientMaster(patientMasterDto);
         return jsonObject;
     }
 
     @PostMapping("getPatientMasterByDto")
-    @ApiOperation(value = "getPatientMasterByDto",httpMethod = "POST")
-    public JSONObject getPatientMasterByDto(@RequestBody GetPantientDto getPantientDto){
+    @ApiOperation(value = "getPatientMasterByDto", httpMethod = "POST")
+    public JSONObject getPatientMasterByDto(@RequestBody GetPantientDto getPantientDto) {
         JSONObject jsonObject = patientMasterService.getPatientMasterByDto(getPantientDto);
         return jsonObject;
     }

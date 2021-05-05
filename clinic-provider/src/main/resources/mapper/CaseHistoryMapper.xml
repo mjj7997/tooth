@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.CaseHistoryMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.CaseHistory">
-        <id column="id" property="id" />
-        <result column="name" property="name" />
-        <result column="sex" property="sex" />
-        <result column="age" property="age" />
-        <result column="patient_id" property="patientId" />
-        <result column="visit_id" property="visitId" />
-        <result column="clinic_type" property="clinicType" />
-        <result column="registration_doctor" property="registrationDoctor" />
-        <result column="registration_doctor_code" property="registrationDoctorCode" />
-        <result column="assistant" property="assistant" />
-        <result column="registration_date" property="registrationDate" />
-        <result column="symptom" property="symptom" />
-        <result column="history_of_present_illness" property="historyOfPresentIllness" />
-        <result column="previous_history" property="previousHistory" />
-        <result column="inspection_report" property="inspectionReport" />
-        <result column="ray_examination" property="rayExamination" />
-        <result column="diagnose" property="diagnose" />
-        <result column="treatment" property="treatment" />
-        <result column="doctor_advice" property="doctorAdvice" />
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="patient_id" property="patientId"/>
+        <result column="visit_id" property="visitId"/>
+        <result column="clinic_type" property="clinicType"/>
+        <result column="registration_doctor" property="registrationDoctor"/>
+        <result column="registration_doctor_code" property="registrationDoctorCode"/>
+        <result column="assistant" property="assistant"/>
+        <result column="registration_date" property="registrationDate"/>
+        <result column="symptom" property="symptom"/>
+        <result column="history_of_present_illness" property="historyOfPresentIllness"/>
+        <result column="previous_history" property="previousHistory"/>
+        <result column="inspection_report" property="inspectionReport"/>
+        <result column="ray_examination" property="rayExamination"/>
+        <result column="diagnose" property="diagnose"/>
+        <result column="treatment" property="treatment"/>
+        <result column="doctor_advice" property="doctorAdvice"/>
         <result column="tooth_location" property="toothLocation"/>
         <result column="treat_plan" property="treatPlan"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, name, sex, age, patient_id, visit_id, clinic_type, registration_doctor, registration_doctor_code, assistant, registration_date, symptom, history_of_present_illness, previous_history, inspection_report, ray_examination, diagnose, treatment, doctor_advice,tooth_location,treat_plan
+        id, name, sex, age, patient_id, visit_id, clinic_type, registration_doctor, registration_doctor_code, assistant,
+        registration_date, symptom, history_of_present_illness, previous_history, inspection_report, ray_examination,
+        diagnose, treatment, doctor_advice,tooth_location,treat_plan
     </sql>
-
 </mapper>

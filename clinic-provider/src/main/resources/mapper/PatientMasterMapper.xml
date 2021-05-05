@@ -1,28 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.PatientMasterMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.PatientMaster">
-        <id column="id" property="id" />
-        <result column="patient_id" property="patientId" />
-        <result column="name" property="name" />
-        <result column="sex" property="sex" />
-        <result column="age" property="age" />
-        <result column="birth" property="birth" />
-        <result column="phone" property="phone" />
-        <result column="area_code" property="areaCode" />
-        <result column="tel" property="tel" />
-        <result column="clinic_type" property="clinicType" />
-        <result column="clinic_doctor" property="clinicDoctor" />
-        <result column="clinic_date" property="clinicDate" />
-        <result column="clinic_tag_id" property="clinicTagId" />
-        <result column="remark" property="remark" />
-        <result column="identity" property="identity" />
-        <result column="addr_province" property="addrProvince" />
-        <result column="addr_city" property="addrCity" />
-        <result column="addr_county" property="addrCounty" />
-        <result column="addr_detailed" property="addrDetailed" />
+        <id column="id" property="id"/>
+        <result column="patient_id" property="patientId"/>
+        <result column="name" property="name"/>
+        <result column="sex" property="sex"/>
+        <result column="age" property="age"/>
+        <result column="birth" property="birth"/>
+        <result column="phone" property="phone"/>
+        <result column="area_code" property="areaCode"/>
+        <result column="tel" property="tel"/>
+        <result column="clinic_type" property="clinicType"/>
+        <result column="clinic_doctor" property="clinicDoctor"/>
+        <result column="clinic_date" property="clinicDate"/>
+        <result column="clinic_tag_id" property="clinicTagId"/>
+        <result column="remark" property="remark"/>
+        <result column="identity" property="identity"/>
+        <result column="addr_province" property="addrProvince"/>
+        <result column="addr_city" property="addrCity"/>
+        <result column="addr_county" property="addrCounty"/>
+        <result column="addr_detailed" property="addrDetailed"/>
         <result column="vip_code" property="vipCode"/>
         <result column="last_date" property="lastDate"/>
         <result column="hosp_code" property="hospCode"/>
@@ -31,11 +30,15 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, patient_id, name, sex, age, birth, phone, area_code, tel, clinic_type, clinic_doctor, clinic_date, clinic_tag_id, remark, identity, addr_province, addr_city, addr_county, addr_detailed,vip_code,last_date,hosp_code,clinic_doctor_code
+        id, patient_id, name, sex, age, birth, phone, area_code, tel, clinic_type, clinic_doctor, clinic_date,
+        clinic_tag_id, remark, identity, addr_province, addr_city, addr_county,
+        addr_detailed,vip_code,last_date,hosp_code,clinic_doctor_code
     </sql>
 
     <select id="getPatientMasterByDto" resultType="com.clinic.provider.domain.entity.PatientMaster">
-        select t.<include refid="Base_Column_List"></include>
+        select t.
+        <include refid="Base_Column_List">
+        </include>
         from
         patient_master t
         where
@@ -51,7 +54,5 @@
         <if test="clinicDate != null and clinicDate !=''">
             order by clinic_date
         </if>
-
     </select>
-
 </mapper>

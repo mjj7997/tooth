@@ -18,8 +18,8 @@ public class RenderResultUtil {
      * @auther : majunjie
      * @createTime :
      */
-    public static<T> JSONObject renderSuccess(String msg){
-        JsonResult jsonResult =new JsonResult();
+    public static <T> JSONObject renderSuccess(String msg) {
+        JsonResult jsonResult = new JsonResult();
         jsonResult.setSuccess(true);
         jsonResult.setStatus("200");
         jsonResult.setMsg(msg);
@@ -32,8 +32,8 @@ public class RenderResultUtil {
      * @auther : majunjie
      * @createTime :
      */
-    public static<T> JSONObject success(String msg,T t){
-        JsonResult jsonResult =new JsonResult();
+    public static <T> JSONObject success(String msg, T t) {
+        JsonResult jsonResult = new JsonResult();
         jsonResult.setSuccess(true);
         jsonResult.setStatus("200");
         jsonResult.setMsg(msg);
@@ -47,8 +47,8 @@ public class RenderResultUtil {
      * @auther :majunjie
      * @createTime :
      */
-    public static JSONObject renderError(String msg){
-        JsonResult jsonResult =new JsonResult();
+    public static JSONObject renderError(String msg) {
+        JsonResult jsonResult = new JsonResult();
         jsonResult.setSuccess(false);
         jsonResult.setStatus("500");
         jsonResult.setMsg(msg);
@@ -61,8 +61,8 @@ public class RenderResultUtil {
      * @auther :majunjie
      * @createTime :
      */
-    public static<T> JSONObject error(String msg,T t){
-        JsonResult jsonResult =new JsonResult();
+    public static <T> JSONObject error(String msg, T t) {
+        JsonResult jsonResult = new JsonResult();
         jsonResult.setSuccess(false);
         jsonResult.setStatus("500");
         jsonResult.setMsg(msg);

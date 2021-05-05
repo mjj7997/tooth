@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.CostDetailsMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.CostDetails">
-        <id column="id" property="id" />
-        <result column="patient_id" property="patientId" />
-        <result column="visit_id" property="visitId" />
-        <result column="item_code" property="itemCode" />
-        <result column="item_name" property="itemName" />
-        <result column="amount" property="amount" />
-        <result column="price" property="price" />
-        <result column="discount_price" property="discountPrice" />
-        <result column="discount_rate" property="discountRate" />
-        <result column="pay_demand_id" property="payDemandId" />
-        <result column="hosp_code" property="hospCode" />
+        <id column="id" property="id"/>
+        <result column="patient_id" property="patientId"/>
+        <result column="visit_id" property="visitId"/>
+        <result column="item_code" property="itemCode"/>
+        <result column="item_name" property="itemName"/>
+        <result column="amount" property="amount"/>
+        <result column="price" property="price"/>
+        <result column="discount_price" property="discountPrice"/>
+        <result column="discount_rate" property="discountRate"/>
+        <result column="pay_demand_id" property="payDemandId"/>
+        <result column="hosp_code" property="hospCode"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, patient_id, visit_id, item_code, item_name, amount, price, discount_price, discount_rate, pay_demand_id, hosp_code
+        id, patient_id, visit_id, item_code, item_name, amount, price, discount_price, discount_rate, pay_demand_id,
+        hosp_code
     </sql>
-
 </mapper>

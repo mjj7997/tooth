@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author majunjie
@@ -25,7 +25,6 @@ public interface StaffDictService extends IService<StaffDict> {
     JSONObject updateStaffDictById(StaffDictDto staffDictDto);
 
     JSONObject getStaffDictByUser(String userId);
-
 
 
 }

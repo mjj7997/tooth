@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author majunjie
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 public interface PriceDictService extends IService<PriceDict> {
 
-    JSONObject getPriceDictByClassId(String classId,String input,String hospCode);
+    JSONObject getPriceDictByClassId(String classId, String input, String hospCode);
 
     JSONObject saveOrUpdatePriceDict(SavePriceDictDto savePriceDictDto);
 

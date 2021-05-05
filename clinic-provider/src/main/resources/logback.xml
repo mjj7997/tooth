@@ -4,9 +4,9 @@
     <contextName>emr-treat-dict-provider</contextName>
 
     <property name="logback.logdir" value="/opt/logs"/>
-<!--    <property name="logback.logdir" value="D:\logs"/>-->
+    <!--    <property name="logback.logdir" value="D:\logs"/>-->
     <property name="logback.appname" value="logfile"/>
- 	<!-- 输出到控制台 -->
+    <!-- 输出到控制台 -->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
             <pattern>

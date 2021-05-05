@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.clinic.common.utils.RenderResultUtil;
 import com.clinic.provider.domain.dto.GetRegistrationByIdDto;
+import com.clinic.provider.domain.dto.GetRegistrationByPatientIdDto;
 import com.clinic.provider.domain.dto.SaveRegistrationDto;
 import com.clinic.provider.domain.dto.UpdateRegistrationStatusDto;
 import com.clinic.provider.domain.entity.PatientMaster;
@@ -30,7 +31,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author majunjie
@@ -47,7 +48,6 @@ public class RegistrationMasterServiceImpl extends ServiceImpl<RegistrationMaste
     private PatientMasterMapper patientMasterMapper;
 
 
-
     @Override
     public JSONObject saveRegistrationMaster(SaveRegistrationDto saveRegistrationDto) {
         //手机号
@@ -59,31 +59,31 @@ public class RegistrationMasterServiceImpl extends ServiceImpl<RegistrationMaste
         String patientId = saveRegistrationDto.getPatientId();
         List<TitalDict> clinicTag = saveRegistrationDto.getClinicTag();
         QueryWrapper<PatientMaster> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("phone",phone).eq("name",name).eq("hosp_code",hospCode);
+        queryWrapper.eq("phone", phone).eq("name", name).eq("hosp_code", hospCode);
         List<PatientMaster> patientMasters = patientMasterMapper.selectList(queryWrapper);
         try {
-            if (CollectionUtils.isEmpty(patientMasters)){
+            if (CollectionUtils.isEmpty(patientMasters)) {
                 PatientMaster patientMaster = new PatientMaster();
-                BeanUtils.copyProperties(saveRegistrationDto,patientMaster);
+                BeanUtils.copyProperties(saveRegistrationDto, patientMaster);
                 patientMaster.setLastDate(LocalDate.now().toString());
                 patientMasterMapper.insert(patientMaster);
             }
             RegistrationMaster registrationMaster = new RegistrationMaster();
-            BeanUtils.copyProperties(saveRegistrationDto,registrationMaster);
+            BeanUtils.copyProperties(saveRegistrationDto, registrationMaster);
             QueryWrapper<RegistrationMaster> wrapper = new QueryWrapper<>();
-            wrapper.eq("patient_id",patientId);
+            wrapper.eq("patient_id", patientId);
             List<RegistrationMaster> registrationMasters = registrationMasterMapper.selectList(wrapper);
             int visitId = 0;
-            if (CollectionUtils.isEmpty(registrationMasters)){
+            if (CollectionUtils.isEmpty(registrationMasters)) {
                 visitId = 1;
-            }else {
-                visitId = registrationMasters.size()+1;
+            } else {
+                visitId = registrationMasters.size() + 1;
             }
             registrationMaster.setVisitId(visitId);
             String tags = JSON.toJSONString(clinicTag);
             registrationMaster.setClinicTag(tags);
             registrationMasterMapper.insert(registrationMaster);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
@@ -95,39 +95,39 @@ public class RegistrationMasterServiceImpl extends ServiceImpl<RegistrationMaste
 
     @Override
     public JSONObject getRegistrationMaster(String hospCode) {
-        if (StringUtils.isEmpty(hospCode)){
+        if (StringUtils.isEmpty(hospCode)) {
             return RenderResultUtil.renderError("hospCode缺失");
         }
         List<GetRegistrationVo> registrationMaster = registrationMasterMapper.getRegistrationMaster(hospCode);
-        return RenderResultUtil.success("查询成功",registrationMaster);
+        return RenderResultUtil.success("查询成功", registrationMaster);
     }
 
     @Override
     public JSONObject getHeadline(String hospCode) {
 
-        if (StringUtils.isEmpty(hospCode)){
+        if (StringUtils.isEmpty(hospCode)) {
             return RenderResultUtil.renderError("hospCode缺失");
         }
         QueryWrapper<RegistrationMaster> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("registration_date",LocalDate.now().toString());
-        queryWrapper.eq("hosp_code",hospCode);
+        queryWrapper.eq("registration_date", LocalDate.now().toString());
+        queryWrapper.eq("hosp_code", hospCode);
         List<RegistrationMaster> registrationMasters = registrationMasterMapper.selectList(queryWrapper);
         int registration = 0;
-        if (!CollectionUtils.isEmpty(registrationMasters)){
+        if (!CollectionUtils.isEmpty(registrationMasters)) {
             registration = registrationMasters.size();
         }
         QueryWrapper<PatientMaster> wrapper = new QueryWrapper<>();
-        wrapper.eq("clinic_date",LocalDate.now().toString());
-        wrapper.eq("hosp_code",hospCode);
+        wrapper.eq("clinic_date", LocalDate.now().toString());
+        wrapper.eq("hosp_code", hospCode);
         List<PatientMaster> patientMasters = patientMasterMapper.selectList(wrapper);
         int patient = 0;
-        if (!CollectionUtils.isEmpty(patientMasters)){
+        if (!CollectionUtils.isEmpty(patientMasters)) {
             patient = registrationMasters.size();
         }
         HeadlineVo headlineVo = new HeadlineVo();
         headlineVo.setPatient(patient);
         headlineVo.setRegistration(registration);
-        return RenderResultUtil.success("查询成功",headlineVo);
+        return RenderResultUtil.success("查询成功", headlineVo);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class RegistrationMasterServiceImpl extends ServiceImpl<RegistrationMaste
         String patientId = getRegistrationByIdDto.getPatientId();
         String visitId = getRegistrationByIdDto.getVisitId();
         List<GetRegistrationVo> list = registrationMasterMapper.getRegistrationById(hospCode, patientId, visitId);
-        return RenderResultUtil.success("查询成功",list.get(0));
+        return RenderResultUtil.success("查询成功", list.get(0));
     }
 
     @Override
@@ -148,14 +148,23 @@ public class RegistrationMasterServiceImpl extends ServiceImpl<RegistrationMaste
         String visitId = updateRegistrationStatusDto.getVisitId();
         Integer clinicState = updateRegistrationStatusDto.getClinicState();
         try {
-            registrationMasterMapper.updateRegistrationStatus(hospCode, patientId, visitId,clinicState);
+            registrationMasterMapper.updateRegistrationStatus(hospCode, patientId, visitId, clinicState);
             log.info("修改完成");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
             return RenderResultUtil.renderError("修改失败");
         }
         return RenderResultUtil.renderSuccess("修改成功");
+    }
+
+    @Override
+    public JSONObject getRegistrationByPatientId(GetRegistrationByPatientIdDto getRegistrationByPatientIdDto) {
+        //医院代码
+        String hospCode = getRegistrationByPatientIdDto.getHospCode();
+        String patientId = getRegistrationByPatientIdDto.getPatientId();
+        List<GetRegistrationVo> list = registrationMasterMapper.getRegistrationById(hospCode, patientId, null);
+        return RenderResultUtil.success("查询成功", list);
     }
 }

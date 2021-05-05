@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.StaffDictMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.StaffDict">
-        <id column="id" property="id" />
-        <result column="user_id" property="userId" />
-        <result column="status" property="status" />
-        <result column="user_name" property="userName" />
-        <result column="tel" property="tel" />
-        <result column="job" property="job" />
-        <result column="job_point" property="jobPoint" />
-        <result column="hosp_name" property="hospName" />
-        <result column="hosp_code" property="hospCode" />
-        <result column="create_name" property="createName" />
-        <result column="update_name" property="updateName" />
-        <result column="password" property="password" />
-        <result column="signature" property="signature" />
-        <result column="create_time" property="createTime" />
-        <result column="update_time" property="updateTime" />
+        <id column="id" property="id"/>
+        <result column="user_id" property="userId"/>
+        <result column="status" property="status"/>
+        <result column="user_name" property="userName"/>
+        <result column="tel" property="tel"/>
+        <result column="job" property="job"/>
+        <result column="job_point" property="jobPoint"/>
+        <result column="hosp_name" property="hospName"/>
+        <result column="hosp_code" property="hospCode"/>
+        <result column="create_name" property="createName"/>
+        <result column="update_name" property="updateName"/>
+        <result column="password" property="password"/>
+        <result column="signature" property="signature"/>
+        <result column="create_time" property="createTime"/>
+        <result column="update_time" property="updateTime"/>
     </resultMap>
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, user_id, status, user_name, tel, job, job_point, hosp_name, hosp_code, create_name, update_name, password, signature, create_time, update_time
+        id, user_id, status, user_name, tel, job, job_point, hosp_name, hosp_code, create_name, update_name, password,
+        signature, create_time, update_time
     </sql>
 
     <select id="getStaffDict" resultType="com.clinic.provider.domain.entity.StaffDict">
@@ -40,5 +40,4 @@
             and (tel like #{input} or user_id like #{input} or user_name like #{input} )
         </if>
     </select>
-
 </mapper>

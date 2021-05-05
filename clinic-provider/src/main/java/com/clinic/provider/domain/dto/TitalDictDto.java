@@ -12,7 +12,7 @@ import lombok.Data;
 @Data
 public class TitalDictDto {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * id
@@ -48,7 +48,6 @@ public class TitalDictDto {
      * 医院代码
      */
     private String hospCode;
-
 
 
 }

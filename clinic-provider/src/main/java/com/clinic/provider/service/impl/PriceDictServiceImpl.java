@@ -20,7 +20,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author majunjie
@@ -35,33 +35,33 @@ public class PriceDictServiceImpl extends ServiceImpl<PriceDictMapper, PriceDict
     private PriceDictMapper priceDictMapper;
 
     @Override
-    public JSONObject getPriceDictByClassId(String classId,String input,String hospCode) {
+    public JSONObject getPriceDictByClassId(String classId, String input, String hospCode) {
 
         List<PriceDict> priceDictByClassId = priceDictMapper.getPriceDictByClassId(classId, input, hospCode);
-        return RenderResultUtil.success("查询成功",priceDictByClassId);
+        return RenderResultUtil.success("查询成功", priceDictByClassId);
     }
 
     @Override
     public JSONObject saveOrUpdatePriceDict(SavePriceDictDto savePriceDictDto) {
         PriceDict priceDict = new PriceDict();
         Integer id = savePriceDictDto.getId();
-        BeanUtils.copyProperties(savePriceDictDto,priceDict);
+        BeanUtils.copyProperties(savePriceDictDto, priceDict);
         String itemName = savePriceDictDto.getItemName();
-        if (!StringUtils.isEmpty(itemName)){
+        if (!StringUtils.isEmpty(itemName)) {
             String inputCode = Pinyin4jUtil.converterToFirstSpell(itemName);
             priceDict.setInputCode(inputCode);
         }
         try {
-            if (id!=null){
+            if (id != null) {
                 QueryWrapper<PriceDict> queryWrapper = new QueryWrapper<>();
-                queryWrapper.eq("id",id);
-                priceDictMapper.update(priceDict,queryWrapper);
+                queryWrapper.eq("id", id);
+                priceDictMapper.update(priceDict, queryWrapper);
                 return RenderResultUtil.renderSuccess("修改成功");
-            }else {
+            } else {
                 priceDictMapper.insert(priceDict);
                 return RenderResultUtil.renderSuccess("新增成功");
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
@@ -73,10 +73,10 @@ public class PriceDictServiceImpl extends ServiceImpl<PriceDictMapper, PriceDict
     @Override
     public JSONObject deletePriceDictById(String id) {
         QueryWrapper<PriceDict> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("id",id);
+        queryWrapper.eq("id", id);
         try {
             priceDictMapper.delete(queryWrapper);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");

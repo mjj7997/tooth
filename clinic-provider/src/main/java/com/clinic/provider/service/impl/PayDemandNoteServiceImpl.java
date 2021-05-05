@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author majunjie
@@ -45,39 +45,39 @@ public class PayDemandNoteServiceImpl extends ServiceImpl<PayDemandNoteMapper, P
         Integer id = payDemandNote.getId();
         //判断是否是新增
         try {
-            if (id==null){
+            if (id == null) {
                 //保存相关的申请单
                 payDemandNoteMapper.insert(payDemandNote);
                 //获取id
                 Integer afterId = payDemandNote.getId();
-                for (CostDetails costDetail:costDetailsList) {
+                for (CostDetails costDetail : costDetailsList) {
                     costDetail.setPayDemandId(afterId);
                     //防止已经保存过的插入
-                    if (costDetail.getId()!=null){
+                    if (costDetail.getId() != null) {
                         continue;
                     }
                     costDetailsMapper.insert(costDetail);
                 }
                 return RenderResultUtil.renderSuccess("新增成功");
-            }else {
+            } else {
                 QueryWrapper<PayDemandNote> queryWrapper = new QueryWrapper<>();
-                queryWrapper.eq("id",id);
-                payDemandNoteMapper.update(payDemandNote,queryWrapper);
+                queryWrapper.eq("id", id);
+                payDemandNoteMapper.update(payDemandNote, queryWrapper);
                 QueryWrapper<CostDetails> wrapper = new QueryWrapper<>();
-                wrapper.eq("pay_demand_id",id);
+                wrapper.eq("pay_demand_id", id);
                 costDetailsMapper.delete(wrapper);
-                for (CostDetails costDetail:costDetailsList) {
+                for (CostDetails costDetail : costDetailsList) {
                     costDetail.setPayDemandId(id);
                     //防止已经保存过的插入
-                    if (costDetail.getId()!=null){
-                        continue;
-                    }
+//                    if (costDetail.getId()!=null){
+//                        continue;
+//                    }
                     costDetailsMapper.insert(costDetail);
                 }
                 return RenderResultUtil.renderSuccess("修改成功");
             }
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
@@ -92,12 +92,12 @@ public class PayDemandNoteServiceImpl extends ServiceImpl<PayDemandNoteMapper, P
         QueryWrapper<PayDemandNote> queryWrapper = new QueryWrapper();
         QueryWrapper<CostDetails> wrapper = new QueryWrapper<>();
         try {
-            wrapper.eq("pay_demand_id",id);
+            wrapper.eq("pay_demand_id", id);
             costDetailsMapper.delete(wrapper);
-            queryWrapper.eq("id",id);
+            queryWrapper.eq("id", id);
             payDemandNoteMapper.delete(queryWrapper);
             return RenderResultUtil.renderSuccess("删除成功");
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
@@ -109,19 +109,19 @@ public class PayDemandNoteServiceImpl extends ServiceImpl<PayDemandNoteMapper, P
     @Override
     public JSONObject getPayDemandNote(String patientId, String visitId, String hospCode) {
         QueryWrapper<PayDemandNote> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("patient_id",patientId).eq("visit_id",visitId).eq("hosp_code",hospCode);
+        queryWrapper.eq("patient_id", patientId).eq("visit_id", visitId).eq("hosp_code", hospCode);
         List<PayDemandNote> payDemandNotes = payDemandNoteMapper.selectList(queryWrapper);
         PayDemandNoteVo payDemandNoteVo = new PayDemandNoteVo();
-        if (CollectionUtils.isEmpty(payDemandNotes)){
-            return RenderResultUtil.success("查询成功",payDemandNoteVo);
+        if (CollectionUtils.isEmpty(payDemandNotes)) {
+            return RenderResultUtil.success("查询成功", payDemandNoteVo);
         }
         PayDemandNote payDemandNote = payDemandNotes.get(0);
         Integer id = payDemandNote.getId();
         payDemandNoteVo.setPayDemandNote(payDemandNote);
         QueryWrapper<CostDetails> wrapper = new QueryWrapper();
-        wrapper.eq("pay_demand_id",id);
+        wrapper.eq("pay_demand_id", id);
         List<CostDetails> costDetails = costDetailsMapper.selectList(wrapper);
         payDemandNoteVo.setCostDetailsList(costDetails);
-        return RenderResultUtil.success("查询成功",payDemandNoteVo);
+        return RenderResultUtil.success("查询成功", payDemandNoteVo);
     }
 }

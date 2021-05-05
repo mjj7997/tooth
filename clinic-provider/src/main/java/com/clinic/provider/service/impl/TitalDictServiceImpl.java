@@ -16,7 +16,7 @@ import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author majunjie
@@ -32,25 +32,33 @@ public class TitalDictServiceImpl extends ServiceImpl<TitalDictMapper, TitalDict
     @Override
     public JSONObject saveTitalDict(TitalDictDto titalDictDto) {
         TitalDict titalDict = new TitalDict();
-        BeanUtils.copyProperties(titalDictDto,titalDict);
+        BeanUtils.copyProperties(titalDictDto, titalDict);
+        Integer id = titalDictDto.getId();
         try {
-            titalDictMapper.insert(titalDict);
-        }catch (Exception e){
+            if (id != null){
+                QueryWrapper<TitalDict> queryWrapper = new QueryWrapper<>();
+                queryWrapper.eq("id", id);
+                titalDictMapper.update(titalDict, queryWrapper);
+            }else {
+                titalDictMapper.insert(titalDict);
+            }
+
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
             return RenderResultUtil.renderError("修改失败");
         }
-        return RenderResultUtil.renderSuccess("保存成功");
+        return RenderResultUtil.renderSuccess("编辑成功");
     }
 
     @Override
     public JSONObject deleteTitalDict(Integer id) {
         try {
-            QueryWrapper<TitalDict> queryWrapper =new QueryWrapper();
-            queryWrapper.eq("id",id);
+            QueryWrapper<TitalDict> queryWrapper = new QueryWrapper();
+            queryWrapper.eq("id", id);
             titalDictMapper.delete(queryWrapper);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
@@ -64,12 +72,12 @@ public class TitalDictServiceImpl extends ServiceImpl<TitalDictMapper, TitalDict
     public JSONObject updateTitalDict(TitalDictDto titalDictDto) {
         TitalDict titalDict = new TitalDict();
         Integer id = titalDictDto.getId();
-        BeanUtils.copyProperties(titalDictDto,titalDict);
+        BeanUtils.copyProperties(titalDictDto, titalDict);
         try {
             QueryWrapper<TitalDict> queryWrapper = new QueryWrapper<>();
-            queryWrapper.eq("id",id);
-            titalDictMapper.update(titalDict,queryWrapper);
-        }catch (Exception e){
+            queryWrapper.eq("id", id);
+            titalDictMapper.update(titalDict, queryWrapper);
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");

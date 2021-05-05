@@ -8,7 +8,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author majunjie
@@ -16,6 +16,6 @@ import java.util.Map;
  */
 public interface PatientMasterMapper extends BaseMapper<PatientMaster> {
 
-    List<PatientMaster> getPatientMasterByDto(Map<String,Object> map);
+    List<PatientMaster> getPatientMasterByDto(Map<String, Object> map);
 
 }

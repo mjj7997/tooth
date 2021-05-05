@@ -20,7 +20,8 @@ public class ServiceLogAspect {
 
 
     @Pointcut("execution( * com.clinic.provider.controller.*.*(..))")
-    public void webLog(){}
+    public void webLog() {
+    }
 
     @Around("webLog()")
     public Object recordTimeLog(ProceedingJoinPoint joinPoint) throws Throwable {

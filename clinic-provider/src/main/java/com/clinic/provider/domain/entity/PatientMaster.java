@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author majunjie
@@ -17,7 +17,7 @@ import java.io.Serializable;
  */
 public class PatientMaster implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 主键
@@ -322,29 +322,29 @@ public class PatientMaster implements Serializable {
     @Override
     public String toString() {
         return "PatientMaster{" +
-        "id=" + id +
-        ", patientId=" + patientId +
-        ", name=" + name +
-        ", sex=" + sex +
-        ", age=" + age +
-        ", birth=" + birth +
-        ", phone=" + phone +
-        ", areaCode=" + areaCode +
-        ", tel=" + tel +
-        ", clinicType=" + clinicType +
-        ", clinicDoctor=" + clinicDoctor +
-        ", clinicDate=" + clinicDate +
-        ", clinicTagId=" + clinicTagId +
-        ", remark=" + remark +
-        ", identity=" + identity +
-        ", addr province=" + addrProvince +
-        ", addrCity=" + addrCity +
-        ", addrCounty=" + addrCounty +
-        ", addrDetailed=" + addrDetailed +
+                "id=" + id +
+                ", patientId=" + patientId +
+                ", name=" + name +
+                ", sex=" + sex +
+                ", age=" + age +
+                ", birth=" + birth +
+                ", phone=" + phone +
+                ", areaCode=" + areaCode +
+                ", tel=" + tel +
+                ", clinicType=" + clinicType +
+                ", clinicDoctor=" + clinicDoctor +
+                ", clinicDate=" + clinicDate +
+                ", clinicTagId=" + clinicTagId +
+                ", remark=" + remark +
+                ", identity=" + identity +
+                ", addr province=" + addrProvince +
+                ", addrCity=" + addrCity +
+                ", addrCounty=" + addrCounty +
+                ", addrDetailed=" + addrDetailed +
                 ", vipCode=" + vipCode +
                 ", lastDate=" + lastDate +
                 ", hospCode=" + hospCode +
                 ", clinicDoctorCode=" + clinicDoctorCode +
-        "}";
+                "}";
     }
 }

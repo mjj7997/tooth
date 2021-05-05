@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author majunjie
@@ -16,7 +16,7 @@ import java.io.Serializable;
  */
 public class PayDemandNote implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 主键id
@@ -191,18 +191,18 @@ public class PayDemandNote implements Serializable {
     @Override
     public String toString() {
         return "PayDemandNote{" +
-        "id=" + id +
-        ", patientId=" + patientId +
-        ", visitId=" + visitId +
-        ", name=" + name +
-        ", sex=" + sex +
-        ", doctorCode=" + doctorCode +
-        ", doctorName=" + doctorName +
-        ", assistantCode=" + assistantCode +
-        ", assistantName=" + assistantName +
-        ", payNoteDate=" + payNoteDate +
-        ", remark=" + remark +
-        ", hospCode=" + hospCode +
-        "}";
+                "id=" + id +
+                ", patientId=" + patientId +
+                ", visitId=" + visitId +
+                ", name=" + name +
+                ", sex=" + sex +
+                ", doctorCode=" + doctorCode +
+                ", doctorName=" + doctorName +
+                ", assistantCode=" + assistantCode +
+                ", assistantName=" + assistantName +
+                ", payNoteDate=" + payNoteDate +
+                ", remark=" + remark +
+                ", hospCode=" + hospCode +
+                "}";
     }
 }

@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author majunjie
@@ -19,7 +19,7 @@ import java.io.Serializable;
 //@TableName("staff_dict")
 public class StaffDict implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 工作人员主键
@@ -236,21 +236,21 @@ public class StaffDict implements Serializable {
     @Override
     public String toString() {
         return "StaffDict{" +
-        "id=" + id +
-        ", userId=" + userId +
-        ", status=" + status +
-        ", userName=" + userName +
-        ", tel=" + tel +
-        ", job=" + job +
-        ", jobPoint=" + jobPoint +
-        ", hospName=" + hospName +
-        ", hospCode=" + hospCode +
-        ", createName=" + createName +
-        ", updateName=" + updateName +
-        ", password=" + password +
-        ", signature=" + signature +
-        ", createTime=" + createTime +
-        ", updateTime=" + updateTime +
-        "}";
+                "id=" + id +
+                ", userId=" + userId +
+                ", status=" + status +
+                ", userName=" + userName +
+                ", tel=" + tel +
+                ", job=" + job +
+                ", jobPoint=" + jobPoint +
+                ", hospName=" + hospName +
+                ", hospCode=" + hospCode +
+                ", createName=" + createName +
+                ", updateName=" + updateName +
+                ", password=" + password +
+                ", signature=" + signature +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                "}";
     }
 }

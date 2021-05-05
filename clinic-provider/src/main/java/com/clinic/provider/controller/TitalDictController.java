@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author majunjie
@@ -25,28 +25,28 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/titalDict")
-@Api(value = "就诊事项api",tags = {"就诊事项api"})
+@Api(value = "就诊事项api", tags = {"就诊事项api"})
 public class TitalDictController {
 
     @Autowired
     private TitalDictService titalDictService;
 
     @PostMapping("saveTitalDict")
-    @ApiOperation(value = "saveTitalDict",httpMethod = "POST")
-    public JSONObject saveTitalDict(@RequestBody TitalDictDto titalDictDto){
+    @ApiOperation(value = "saveTitalDict", httpMethod = "POST")
+    public JSONObject saveTitalDict(@RequestBody TitalDictDto titalDictDto) {
         return titalDictService.saveTitalDict(titalDictDto);
     }
 
 
     @PostMapping("deleteTitalDict")
-    @ApiOperation(value = "deleteTitalDict",httpMethod = "POST")
-    public JSONObject deleteTitalDict(@RequestParam Integer id){
+    @ApiOperation(value = "deleteTitalDict", httpMethod = "POST")
+    public JSONObject deleteTitalDict(@RequestParam Integer id) {
         return titalDictService.deleteTitalDict(id);
     }
 
     @PostMapping("updateTitalDict")
-    @ApiOperation(value = "updateTitalDict（修改子集）",httpMethod = "POST")
-    public JSONObject updateTitalDict(@RequestBody TitalDictDto titalDictDto){
+    @ApiOperation(value = "updateTitalDict（修改子集）", httpMethod = "POST")
+    public JSONObject updateTitalDict(@RequestBody TitalDictDto titalDictDto) {
         return titalDictService.updateTitalDict(titalDictDto);
     }
 }

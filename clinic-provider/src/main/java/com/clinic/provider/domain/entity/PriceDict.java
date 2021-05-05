@@ -1,13 +1,15 @@
 package com.clinic.provider.domain.entity;
 
 import java.math.BigDecimal;
+
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
+
 import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author majunjie
@@ -15,7 +17,7 @@ import java.io.Serializable;
  */
 public class PriceDict implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 主键id
@@ -138,15 +140,15 @@ public class PriceDict implements Serializable {
     @Override
     public String toString() {
         return "PriceDict{" +
-        "id=" + id +
-        ", itemCode=" + itemCode +
-        ", itemName=" + itemName +
-        ", price=" + price +
-        ", unit=" + unit +
-        ", inputCode=" + inputCode +
-        ", classType=" + classType +
-        ", hospCode=" + hospCode +
+                "id=" + id +
+                ", itemCode=" + itemCode +
+                ", itemName=" + itemName +
+                ", price=" + price +
+                ", unit=" + unit +
+                ", inputCode=" + inputCode +
+                ", classType=" + classType +
+                ", hospCode=" + hospCode +
                 ", className=" + className +
-        "}";
+                "}";
     }
 }

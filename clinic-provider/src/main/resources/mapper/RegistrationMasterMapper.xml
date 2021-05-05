@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.RegistrationMasterMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.RegistrationMaster">
-        <id column="id" property="id" />
-        <result column="patient_id" property="patientId" />
-        <result column="visit_id" property="visitId" />
-        <result column="name" property="name" />
-        <result column="phone" property="phone" />
-        <result column="clinic_state" property="clinicState" />
-        <result column="vip_code" property="vipCode" />
-        <result column="registration_date" property="registrationDate" />
-        <result column="operation_date" property="operationDate" />
-        <result column="clinic_tag" property="clinicTag" />
+        <id column="id" property="id"/>
+        <result column="patient_id" property="patientId"/>
+        <result column="visit_id" property="visitId"/>
+        <result column="name" property="name"/>
+        <result column="phone" property="phone"/>
+        <result column="clinic_state" property="clinicState"/>
+        <result column="vip_code" property="vipCode"/>
+        <result column="registration_date" property="registrationDate"/>
+        <result column="operation_date" property="operationDate"/>
+        <result column="clinic_tag" property="clinicTag"/>
         <result column="registration_doctor" property="registrationDoctor"/>
         <result column="hosp_code" property="hospCode"/>
         <result column="registration_doctor_code" property="registrationDoctorCode"/>
@@ -21,15 +20,18 @@
 
     <!-- 通用查询结果列 -->
     <sql id="Base_Column_List">
-        id, patient_id, visit_id, name, phone, clinic_state, vip_code, registration_date, operation_date, clinic_tag,registration_doctor,hosp_code,registration_doctor_code
+        id, patient_id, visit_id, name, phone, clinic_state, vip_code, registration_date, operation_date,
+        clinic_tag,registration_doctor,hosp_code,registration_doctor_code
     </sql>
 
     <sql id="Respone_List">
-        id, visit_id, clinic_state, registration_date, operation_date, clinic_tag,registration_doctor,registration_doctor_code
+        id, visit_id, clinic_state, registration_date, operation_date,
+        clinic_tag,registration_doctor,registration_doctor_code
     </sql>
 
     <select id="getRegistrationMaster" resultType="com.clinic.provider.domain.vo.GetRegistrationVo">
-        select t.<include refid="Respone_List"></include>,p.* from registration_master t,patient_master p
+        select t.<include refid="Respone_List">
+    </include>,p.* from registration_master t,patient_master p
         where 1=1
         and t.name = p.name
         and t.phone = p.phone
@@ -42,7 +44,8 @@
     </select>
 
     <select id="getRegistrationById" resultType="com.clinic.provider.domain.vo.GetRegistrationVo">
-        select t.<include refid="Respone_List"></include>,p.* from registration_master t,patient_master p
+        select t.<include refid="Respone_List">
+    </include>,p.* from registration_master t,patient_master p
         where 1=1
         and t.name = p.name
         and t.phone = p.phone
@@ -65,7 +68,5 @@
         and t.hosp_code = #{hospCode}
         and t.patient_id = #{patientId}
         and t.visit_id = #{visitId}
-
     </update>
-
 </mapper>

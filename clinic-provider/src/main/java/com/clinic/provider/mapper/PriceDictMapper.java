@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author majunjie
@@ -16,6 +16,6 @@ import java.util.List;
  */
 public interface PriceDictMapper extends BaseMapper<PriceDict> {
 
-    List<PriceDict> getPriceDictByClassId(@Param("classId") String classId,@Param("input") String input,@Param("hospCode") String hospCode);
+    List<PriceDict> getPriceDictByClassId(@Param("classId") String classId, @Param("input") String input, @Param("hospCode") String hospCode);
 
 }

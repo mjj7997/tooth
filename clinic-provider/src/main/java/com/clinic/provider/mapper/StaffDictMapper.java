@@ -9,7 +9,7 @@ import java.util.List;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author majunjie
@@ -18,7 +18,7 @@ import java.util.List;
 public interface StaffDictMapper extends BaseMapper<StaffDict> {
 
 
-    List<StaffDict> getStaffDict(@Param("status") Integer status,@Param("hospCode")String hospCode,
-                                 @Param("input")String input);
+    List<StaffDict> getStaffDict(@Param("status") Integer status, @Param("hospCode") String hospCode,
+                                 @Param("input") String input);
 
 }

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author majunjie

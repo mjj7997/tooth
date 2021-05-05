@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ *
  * </p>
  *
  * @author majunjie
@@ -16,7 +16,7 @@ import java.io.Serializable;
  */
 public class CostDetails implements Serializable {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     /**
      * 主键id
@@ -177,17 +177,17 @@ public class CostDetails implements Serializable {
     @Override
     public String toString() {
         return "CostDetails{" +
-        "id=" + id +
-        ", patientId=" + patientId +
-        ", visitId=" + visitId +
-        ", itemCode=" + itemCode +
-        ", itemName=" + itemName +
-        ", amount=" + amount +
-        ", price=" + price +
-        ", discountPrice=" + discountPrice +
-        ", discountRate=" + discountRate +
-        ", payDemandId=" + payDemandId +
-        ", hospCode=" + hospCode +
-        "}";
+                "id=" + id +
+                ", patientId=" + patientId +
+                ", visitId=" + visitId +
+                ", itemCode=" + itemCode +
+                ", itemName=" + itemName +
+                ", amount=" + amount +
+                ", price=" + price +
+                ", discountPrice=" + discountPrice +
+                ", discountRate=" + discountRate +
+                ", payDemandId=" + payDemandId +
+                ", hospCode=" + hospCode +
+                "}";
     }
 }

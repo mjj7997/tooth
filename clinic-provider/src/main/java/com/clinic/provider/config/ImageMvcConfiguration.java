@@ -22,7 +22,7 @@ public class ImageMvcConfiguration implements WebMvcConfigurer {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/image/**").addResourceLocations("file:///"+realName);
+        registry.addResourceHandler("/image/**").addResourceLocations("file:///" + realName);
 
         // 放行swagger
         registry.addResourceHandler("swagger-ui.html").addResourceLocations("classpath:/META-INF/resources/");

@@ -8,7 +8,7 @@ package com.clinic.common.utils;
 public class PathUtils {
 
     //获取文件后缀名
-    public static String getFlieSuffixName (String flieName){
+    public static String getFlieSuffixName(String flieName) {
         String suffixName = flieName.substring(flieName.indexOf("."));
         return suffixName;
     }

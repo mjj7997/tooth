@@ -21,7 +21,7 @@ import java.util.List;
 
 /**
  * <p>
- *  服务实现类
+ * 服务实现类
  * </p>
  *
  * @author majunjie
@@ -38,17 +38,17 @@ public class CaseHistoryServiceImpl extends ServiceImpl<CaseHistoryMapper, CaseH
     @Override
     public JSONObject saveOrUpdateCaseHistory(CaseHistoryDto caseHistoryDto) {
         CaseHistory caseHistory = new CaseHistory();
-        BeanUtils.copyProperties(caseHistoryDto,caseHistory);
+        BeanUtils.copyProperties(caseHistoryDto, caseHistory);
         Integer id = caseHistory.getId();
-        try{
-            if (id!=null){
-                QueryWrapper<CaseHistory>queryWrapper=new QueryWrapper<>();
-                queryWrapper.eq("id",id);
-                caseHistoryMapper.update(caseHistory,queryWrapper);
-            }else {
+        try {
+            if (id != null) {
+                QueryWrapper<CaseHistory> queryWrapper = new QueryWrapper<>();
+                queryWrapper.eq("id", id);
+                caseHistoryMapper.update(caseHistory, queryWrapper);
+            } else {
                 caseHistoryMapper.insert(caseHistory);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
             log.info("回滚!!!");
@@ -64,14 +64,14 @@ public class CaseHistoryServiceImpl extends ServiceImpl<CaseHistoryMapper, CaseH
         String visitId = caseHistoryDto.getVisitId();
         String hospCode = caseHistoryDto.getHospCode();
         QueryWrapper<CaseHistory> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("patient_id",patientId).eq("visit_id",visitId).eq("hosp_code",hospCode);
+        queryWrapper.eq("patient_id", patientId).eq("visit_id", visitId).eq("hosp_code", hospCode);
         List<CaseHistory> caseHistories = caseHistoryMapper.selectList(queryWrapper);
-        if (CollectionUtils.isEmpty(caseHistories)){
+        if (CollectionUtils.isEmpty(caseHistories)) {
             CaseHistory caseHistory = new CaseHistory();
             JSONObject jsonObject = RenderResultUtil.error("查询结果为空", caseHistory);
             return jsonObject;
-        }else {
-            return RenderResultUtil.success("查询成功",caseHistories.get(0));
+        } else {
+            return RenderResultUtil.success("查询成功", caseHistories.get(0));
         }
     }
 
@@ -81,14 +81,32 @@ public class CaseHistoryServiceImpl extends ServiceImpl<CaseHistoryMapper, CaseH
         String visitId = caseHistoryDto.getVisitId();
         String hospCode = caseHistoryDto.getHospCode();
         QueryWrapper<CaseHistory> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("patient_id",patientId).eq("visit_id",visitId).eq("hosp_code",hospCode);
+        queryWrapper.eq("patient_id", patientId).eq("visit_id", visitId).eq("hosp_code", hospCode);
         List<CaseHistory> caseHistories = caseHistoryMapper.selectList(queryWrapper);
-        if (CollectionUtils.isEmpty(caseHistories)){
+        if (CollectionUtils.isEmpty(caseHistories)) {
             CaseHistory caseHistory = new CaseHistory();
             CommonResult<CaseHistory> success = CommonResult.success(caseHistory);
             return success;
-        }else {
+        } else {
             return CommonResult.success(caseHistories.get(0));
+        }
+
+    }
+
+    @Override
+    public JSONObject getCaseHistoryByPatientId(GetCaseHistoryDto caseHistoryDto) {
+        String patientId = caseHistoryDto.getPatientId();
+        String visitId = caseHistoryDto.getVisitId();
+        String hospCode = caseHistoryDto.getHospCode();
+        QueryWrapper<CaseHistory> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("patient_id", patientId).eq("hosp_code", hospCode);
+        List<CaseHistory> caseHistories = caseHistoryMapper.selectList(queryWrapper);
+        if (CollectionUtils.isEmpty(caseHistories)) {
+            CaseHistory caseHistory = new CaseHistory();
+            JSONObject jsonObject = RenderResultUtil.error("查询结果为空", caseHistory);
+            return jsonObject;
+        } else {
+            return RenderResultUtil.success("查询成功", caseHistories);
         }
 
     }

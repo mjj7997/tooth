@@ -22,15 +22,12 @@ public class OssConfig {
     @Value("${oss.accessKeySecret}")
     private String accessKeySecret;
 
-    @Value("${oss.bucketName}")
-    private String bucketName;
-
 
     /**
      * 定义ossClient bean对象
      */
     @Bean
-    public OSSClient ossClient(){
-        return new OSSClient(endPoint,accessKeyId,accessKeySecret);
+    public OSSClient ossClient() {
+        return new OSSClient(endPoint, accessKeyId, accessKeySecret);
     }
 }

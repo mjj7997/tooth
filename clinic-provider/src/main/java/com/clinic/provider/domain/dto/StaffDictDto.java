@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Data
 public class StaffDictDto implements Serializable {
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
 
     private List<StaffDict> staffDictList;
 }

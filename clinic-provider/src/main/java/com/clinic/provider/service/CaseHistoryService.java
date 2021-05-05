@@ -9,7 +9,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author majunjie
@@ -22,6 +22,8 @@ public interface CaseHistoryService extends IService<CaseHistory> {
     JSONObject getCaseHistoryById(GetCaseHistoryDto caseHistoryDto);
 
     CommonResult<CaseHistory> getCaseHistoryById1(GetCaseHistoryDto caseHistoryDto);
+
+    JSONObject getCaseHistoryByPatientId(GetCaseHistoryDto caseHistoryDto);
 
 
 }

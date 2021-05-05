@@ -32,12 +32,12 @@ public class FileUpload {
 
 
     @PostMapping("fileUpload")
-    public JSONObject fileUpload(@RequestParam("files")MultipartFile files){
-        if (files.isEmpty()){
+    public JSONObject fileUpload(@RequestParam("files") MultipartFile files) {
+        if (files.isEmpty()) {
             return RenderResultUtil.renderError("文件不能为空");
         }
         File file = new File(realPath);
-        if (!file.isDirectory()){
+        if (!file.isDirectory()) {
             file.mkdir();
         }
         String name = files.getOriginalFilename();
@@ -48,10 +48,10 @@ public class FileUpload {
         try {
             Path path1 = Paths.get(path);
             files.transferTo(path1);
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return RenderResultUtil.renderError("保存失败");
         }
-        return RenderResultUtil.success("保存成功",fileName);
+        return RenderResultUtil.success("保存成功", fileName);
     }
 }

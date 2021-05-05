@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  * <p>
- *  Mapper 接口
+ * Mapper 接口
  * </p>
  *
  * @author majunjie
@@ -20,11 +20,11 @@ public interface RegistrationMasterMapper extends BaseMapper<RegistrationMaster>
 
     List<GetRegistrationVo> getRegistrationMaster(@Param("hospCode") String hospCode);
 
-    List<GetRegistrationVo> getRegistrationById(@Param("hospCode") String hospCode,@Param("patientId")String patientId,
-                                                @Param("visitId")String visitId);
+    List<GetRegistrationVo> getRegistrationById(@Param("hospCode") String hospCode, @Param("patientId") String patientId,
+                                                @Param("visitId") String visitId);
 
-    Integer updateRegistrationStatus(@Param("hospCode") String hospCode,@Param("patientId")String patientId,
-                                                     @Param("visitId")String visitId,@Param("clinicState")Integer clinicState);
+    Integer updateRegistrationStatus(@Param("hospCode") String hospCode, @Param("patientId") String patientId,
+                                     @Param("visitId") String visitId, @Param("clinicState") Integer clinicState);
 
 
 }

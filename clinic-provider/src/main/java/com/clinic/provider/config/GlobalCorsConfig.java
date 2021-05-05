@@ -35,7 +35,7 @@ public class GlobalCorsConfig implements WebMvcConfigurer {
 //        return new CorsFilter(source);
 //    }
 
-    static final String ORIGINS[] = new String[]{"GET", "POST", "PUT", "DELETE","OPTIONS"};
+    static final String ORIGINS[] = new String[]{"GET", "POST", "PUT", "DELETE", "OPTIONS"};
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author majunjie
@@ -21,6 +21,6 @@ public interface PayDemandNoteService extends IService<PayDemandNote> {
 
     JSONObject deletePayDemandNote(String id);
 
-    JSONObject getPayDemandNote(String patientId,String visitId,String hospCode);
+    JSONObject getPayDemandNote(String patientId, String visitId, String hospCode);
 
 }

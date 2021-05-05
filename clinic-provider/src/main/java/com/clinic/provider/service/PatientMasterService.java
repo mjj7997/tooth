@@ -8,7 +8,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author majunjie
@@ -18,18 +18,21 @@ public interface PatientMasterService extends IService<PatientMaster> {
 
     /**
      * 获取生成得病历号
+     *
      * @return
      */
     JSONObject getpatientId();
 
     /**
      * 保存患者信息
+     *
      * @return
      */
     JSONObject savePatientMaster(PatientMasterDto patientMasterDto);
 
     /**
      * 查询
+     *
      * @return
      */
     JSONObject getPatientMasterByDto(GetPantientDto getPantientDto);

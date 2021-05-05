@@ -19,11 +19,12 @@ public class Pinyin4jUtil {
 
     /**
      * getFirstSpellPinYin:(多音字的时候获取第一个). <br/>
-     * @param src  传入的拼音字符串，以逗号隔开
+     *
+     * @param src         传入的拼音字符串，以逗号隔开
      * @param isFullSpell 是否全拼，true:全拼，false:第一个汉字全拼(其它汉字取首字母)
      * @return 第一个拼音
      */
-    public static String getFirstSpellPinYin(String src , boolean isFullSpell) {
+    public static String getFirstSpellPinYin(String src, boolean isFullSpell) {
         String targetStr = makeStringByStringSet(getPinyin(src, isFullSpell));
         String[] split = targetStr.split(",");
         if (split.length > 1) {
@@ -34,8 +35,9 @@ public class Pinyin4jUtil {
 
     /**
      * makeStringByStringSet:(拼音字符串集合转换字符串(逗号分隔)). <br/>
-     * @param stringSet  拼音集合
-     * @return  带逗号字符串
+     *
+     * @param stringSet 拼音集合
+     * @return 带逗号字符串
      */
     public static String makeStringByStringSet(Set<String> stringSet) {
         StringBuilder str = new StringBuilder();
@@ -55,7 +57,8 @@ public class Pinyin4jUtil {
 
     /**
      * getPinyin:(获取汉字拼音). <br/>
-     * @param src   汉字
+     *
+     * @param src 汉字
      * @return
      */
     public static Set<String> getPinyin(String src, boolean isFullSpell) {
@@ -94,9 +97,9 @@ public class Pinyin4jUtil {
                     }
                 } else if (((int) c >= 65 && (int) c <= 90)
                         || ((int) c >= 97 && (int) c <= 122)) {//英文
-                    temp[i] = new String[] { String.valueOf(srcChar[i]) };
+                    temp[i] = new String[]{String.valueOf(srcChar[i])};
                 } else {
-                    temp[i] = new String[] { "" };
+                    temp[i] = new String[]{""};
                 }
             }
             String[] pingyinArray = exchange(temp);
@@ -111,6 +114,7 @@ public class Pinyin4jUtil {
 
     /**
      * 递归
+     *
      * @param strJaggedArray
      * @return
      */
@@ -121,6 +125,7 @@ public class Pinyin4jUtil {
 
     /**
      * 递归
+     *
      * @param strJaggedArray
      * @return
      */
@@ -152,8 +157,7 @@ public class Pinyin4jUtil {
     /**
      * 汉字转换位汉语拼音首字母，英文字符不变，特殊字符丢失 支持多音字，生成方式如（长沙市长:cssc,zssz,zssc,cssz）
      *
-     * @param chines
-     *            汉字
+     * @param chines 汉字
      * @return 拼音
      */
     public static String converterToFirstSpell(String chines) {
@@ -197,8 +201,7 @@ public class Pinyin4jUtil {
      * 支持多音字，生成方式如（重当参:zhongdangcen,zhongdangcan,chongdangcen
      * ,chongdangshen,zhongdangshen,chongdangcan）
      *
-     * @param chines
-     *            汉字
+     * @param chines 汉字
      * @return 拼音
      */
     public static String converterToSpell(String chines) {

@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author majunjie
@@ -20,29 +20,29 @@ import org.springframework.stereotype.Controller;
  */
 @RestController
 @RequestMapping("/classDict")
-@Api(value = "费用分类api",tags = {"费用分类api"})
+@Api(value = "费用分类api", tags = {"费用分类api"})
 public class ClassDictController {
 
     @Autowired
     private ClassDictService classDictService;
 
     @PostMapping("getClassDict")
-    public JSONObject getClassDict(@RequestParam("hospCode") String hospCode){
+    public JSONObject getClassDict(@RequestParam("hospCode") String hospCode) {
         return classDictService.getClassDict(hospCode);
     }
 
     @PostMapping("saveOrUpdateClassDict")
-    public JSONObject saveOrUpdateClassDict(@RequestBody SaveClassDictDto saveClassDictDto){
+    public JSONObject saveOrUpdateClassDict(@RequestBody SaveClassDictDto saveClassDictDto) {
         return classDictService.saveOrUpdateClassDict(saveClassDictDto);
     }
 
     @PostMapping("deleteClassDictById")
-    public JSONObject deleteClassDictById(@RequestParam("id") Integer id){
+    public JSONObject deleteClassDictById(@RequestParam("id") Integer id) {
         return classDictService.deleteClassDictById(id);
     }
 
     @PostMapping("getMenuList")
-    public JSONObject getMenuList(@RequestParam("hospCode")String hospCode){
+    public JSONObject getMenuList(@RequestParam("hospCode") String hospCode) {
         return classDictService.getMenuList(hospCode);
     }
 }

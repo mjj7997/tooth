@@ -34,16 +34,16 @@ public class Login {
         //对字符串进行md5加密
         String md5Str = MD5Utils.getMD5Str(password);
         QueryWrapper<StaffDict> wrapper = new QueryWrapper<>();
-        wrapper.eq("user_id",userId);
+        wrapper.eq("user_id", userId);
         List<StaffDict> staffDicts = staffDictMapper.selectList(wrapper);
-        if (CollectionUtils.isEmpty(staffDicts)){
-            return RenderResultUtil.error("未注册",false);
+        if (CollectionUtils.isEmpty(staffDicts)) {
+            return RenderResultUtil.error("未注册", false);
         }
         String staffPassword = staffDicts.get(0).getPassword();
-        if (!staffPassword.equals(md5Str)){
-            return RenderResultUtil.error("密码不正确",false);
+        if (!staffPassword.equals(md5Str)) {
+            return RenderResultUtil.error("密码不正确", false);
         }
-        return RenderResultUtil.success("登录成功",true);
+        return RenderResultUtil.success("登录成功", true);
     }
 
 }

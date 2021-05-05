@@ -2,6 +2,7 @@ package com.clinic.provider.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.clinic.provider.domain.dto.GetRegistrationByIdDto;
+import com.clinic.provider.domain.dto.GetRegistrationByPatientIdDto;
 import com.clinic.provider.domain.dto.SaveRegistrationDto;
 import com.clinic.provider.domain.dto.UpdateRegistrationStatusDto;
 import com.clinic.provider.domain.entity.RegistrationMaster;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * <p>
- *  服务类
+ * 服务类
  * </p>
  *
  * @author majunjie
@@ -28,6 +29,8 @@ public interface RegistrationMasterService extends IService<RegistrationMaster> 
     JSONObject getRegistrationById(GetRegistrationByIdDto getRegistrationByIdDto);
 
     JSONObject updateRegistrationStatus(UpdateRegistrationStatusDto updateRegistrationStatusDto);
+
+    JSONObject getRegistrationByPatientId(GetRegistrationByPatientIdDto getRegistrationByPatientIdDto);
 
 
 }

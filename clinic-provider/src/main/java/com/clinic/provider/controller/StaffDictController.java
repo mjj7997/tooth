@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
- *  前端控制器
+ * 前端控制器
  * </p>
  *
  * @author majunjie
@@ -21,47 +21,47 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/staffDict")
-@Api(value = "职工管理api",tags = {"职工管理api"})
+@Api(value = "职工管理api", tags = {"职工管理api"})
 public class StaffDictController {
 
     @Autowired
     private StaffDictService staffDictService;
 
-    @ApiOperation(value = "saveStaffDict",httpMethod = "POST")
+    @ApiOperation(value = "saveStaffDict", httpMethod = "POST")
     @PostMapping("saveStaffDict")
-    public JSONObject saveStaffDict(@RequestBody StaffDictDto staffDictDto){
+    public JSONObject saveStaffDict(@RequestBody StaffDictDto staffDictDto) {
 
         JSONObject jsonObject = staffDictService.saveStaffDict(staffDictDto);
         return jsonObject;
     }
 
-    @ApiOperation(value = "getStaffDict",httpMethod = "POST")
+    @ApiOperation(value = "getStaffDict", httpMethod = "POST")
     @PostMapping("getStaffDict")
-    public JSONObject getStaffDict(@RequestBody SelectStaffDto selectStaffDto){
+    public JSONObject getStaffDict(@RequestBody SelectStaffDto selectStaffDto) {
 
         JSONObject jsonObject = staffDictService.getStaffDict(selectStaffDto);
         return jsonObject;
     }
 
-    @ApiOperation(value = "getStaffDictByUser",httpMethod = "POST")
+    @ApiOperation(value = "getStaffDictByUser", httpMethod = "POST")
     @PostMapping("getStaffDictByUser")
-    public JSONObject getStaffDictByUser(@RequestParam("userId") String userId){
+    public JSONObject getStaffDictByUser(@RequestParam("userId") String userId) {
 
         JSONObject jsonObject = staffDictService.getStaffDictByUser(userId);
         return jsonObject;
     }
 
-    @ApiOperation(value = "delStaffDictById",httpMethod = "POST")
+    @ApiOperation(value = "delStaffDictById", httpMethod = "POST")
     @PostMapping("delStaffDictById")
-    public JSONObject delStaffDictById(@RequestParam("id") Integer id){
+    public JSONObject delStaffDictById(@RequestParam("id") Integer id) {
 
         JSONObject jsonObject = staffDictService.delStaffDictById(id);
         return jsonObject;
     }
 
-    @ApiOperation(value = "updateStaffDictById",httpMethod = "POST")
+    @ApiOperation(value = "updateStaffDictById", httpMethod = "POST")
     @PostMapping("updateStaffDictById")
-    public JSONObject updateStaffDictById(@RequestBody StaffDictDto staffDictDto){
+    public JSONObject updateStaffDictById(@RequestBody StaffDictDto staffDictDto) {
 
         JSONObject jsonObject = staffDictService.updateStaffDictById(staffDictDto);
         return jsonObject;

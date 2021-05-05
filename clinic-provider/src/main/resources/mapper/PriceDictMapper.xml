@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.clinic.provider.mapper.PriceDictMapper">
-
     <!-- 通用查询映射结果 -->
     <resultMap id="BaseResultMap" type="com.clinic.provider.domain.entity.PriceDict">
-        <id column="id" property="id" />
-        <result column="item_code" property="itemCode" />
-        <result column="item_name" property="itemName" />
-        <result column="price" property="price" />
-        <result column="unit" property="unit" />
-        <result column="input_code" property="inputCode" />
-        <result column="class_type" property="classType" />
-        <result column="hosp_code" property="hospCode" />
+        <id column="id" property="id"/>
+        <result column="item_code" property="itemCode"/>
+        <result column="item_name" property="itemName"/>
+        <result column="price" property="price"/>
+        <result column="unit" property="unit"/>
+        <result column="input_code" property="inputCode"/>
+        <result column="class_type" property="classType"/>
+        <result column="hosp_code" property="hospCode"/>
         <result column="class_name" property="className"/>
     </resultMap>
 
@@ -31,5 +30,4 @@
         </if>
         and hosp_code = #{hospCode}
     </select>
-
 </mapper>
